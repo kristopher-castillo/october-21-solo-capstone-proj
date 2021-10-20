@@ -10,6 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     recipes = db.relationship("Recipe", back_populates="users", cascade="all, delete")
     notes = db.relationship("Note", back_populates="users", cascade="all, delete")
@@ -29,5 +31,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
