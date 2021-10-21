@@ -52,6 +52,7 @@ const RecipePage = () => {
           <h1 className="recipe-title">{recipe?.title}</h1>
           <h3 className="recipe-author">By {recipeAuthor?.username}</h3>
         </div>
+        <hr></hr>
         <div className="recipe-head-container">
           <div className="recipe-info-container">
             <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
