@@ -25,7 +25,7 @@ def get_recipes():
 
   recipes = Recipe.query.all()
   return {
-    'recipes': [recipe.to_dict() for recipe in recipes]
+    'all_recipes': [recipe.to_dict() for recipe in recipes]
   }
 
 @recipe_routes.route('/<int:id>')
@@ -37,7 +37,7 @@ def get_one_recipe(id):
   recipes = Recipe.query.filter(Recipe.id == id).first()
   return recipes.to_dict()
 
-@recipe_routes('/', methods=['POST'])
+@recipe_routes.route('/', methods=['POST'])
 @login_required
 def new_recipe():
   """
@@ -63,7 +63,7 @@ def new_recipe():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@recipe_routes('/<int:id', methods=['PATCH'])
+@recipe_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_recipe():
   """
@@ -87,7 +87,7 @@ def edit_recipe():
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 
-@recipe_routes('/<int:id', methods=['DELETE'])
+@recipe_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_recipe():
   recipe_to_delete = Recipe.query.filter(Recipe.id == id).first()
