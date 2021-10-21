@@ -112,5 +112,5 @@ def get_recipe_ingredients(id):
   
 
   return {
-      'ingredients': [ingredient.to_dict() for ingredient in ingredients]
+      'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
   }

@@ -11,9 +11,9 @@ const RecipePage = () => {
   const sessionUser = useSelector((state) => state.session.user)
   const recipe = useSelector((state) => state.recipes?.recipes)
   const images = useSelector((state) => state.images?.images?.all_images)
+  const ingredients = useSelector((state) => state.ingredients?.ingredients?.recipe_ingredients)
   const { recipeId } = useParams();
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,7 +44,14 @@ const RecipePage = () => {
           <img src={recipeImage?.image_url} alt={recipeId}></img>
         </div>
         <div className="recipe-ingredients-container">
-        
+          <h3 className="recipe-ingredients-title">Ingredients</h3>
+          <ul className="recipe-ingredients-list">
+            {ingredients?.map((ingredient) => (
+              <li className="ingredient-item" key={ingredient.id}>
+                {ingredient.amount_unit} {ingredient.name}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
