@@ -2,20 +2,26 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOneRecipe } from "../../store/recipe";
+import { getImages } from "../../store/image";
 
 import "./RecipePage.css";
 
 const RecipePage = () => {
   const sessionUser = useSelector((state) => state.session.user)
   const recipe = useSelector((state) => state.recipes?.recipes)
-  
+  const images = useSelector((state) => state.images?.images?.all_images)
   const { recipeId } = useParams();
+  const recipeImage = images?.find((image) => image.recipe_id === +recipeId)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOneRecipe(recipeId))
   }, [dispatch, recipeId])
+
+  useEffect(() => {
+    dispatch(getImages())
+  }, [dispatch])
 
   document.title = recipe?.title
   return (
@@ -28,7 +34,7 @@ const RecipePage = () => {
           <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
           <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
           <p className="recipe-description">{recipe?.description}</p>
-          {/* <img src={}></img> */}
+          <img src={recipeImage?.image_url} alt={recipeId}></img>
         </div>
       </div>
 
