@@ -20,7 +20,8 @@ def seed_recipes():
       title="Strawberry and Ice Cream Sandwiches",
       description="This summertime snack is a spin on the Italian treat, brioche con gelato, which is typically served in hotter months for breakfast. This ice cream sandwich is made with actual bread — rather than cookies — landing this dessert in the not-too-sweet category. Griddling or grilling the buns with a butter-sugar finish adds a bit of caramelized sweetness. These are best eaten immediately, so have guests at the ready for assembling. The combination of still-warm bread, melting ice cream and strawberries is bliss.",
       yield_amount=4,
-      time=15
+      completion_time=15,
+      user_id=3
     )
   )
 
