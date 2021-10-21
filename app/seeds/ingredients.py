@@ -87,7 +87,32 @@ def seed_ingredients():
         name="thinly sliced scallion greens",
         amount_unit=2,
         recipe_id=2
-    )
+    ),
+    ingredient_18=Ingredient(
+        name="strawberries, washed, hulled and roughly chopped",
+        amount_unit=12,
+        recipe_id=3
+    ),
+    ingredient_19=Ingredient(
+        name="granulated sugar, plus more for sprinkling",
+        amount_unit=1,
+        recipe_id=3
+    ),
+    ingredient_20=Ingredient(
+        name="slider buns or dinner rolls, preferably brioche (see Tip)",
+        amount_unit=4,
+        recipe_id=3
+    ),
+    ingredient_21=Ingredient(
+        name="salted butter, melted",
+        amount_unit=0.25,
+        recipe_id=3
+    ),
+    ingredient_22=Ingredient(
+        name="vanilla or strawberry ice cream",
+        amount_unit=1,
+        recipe_id=3
+    ),
   )
 
   for key in seeders:

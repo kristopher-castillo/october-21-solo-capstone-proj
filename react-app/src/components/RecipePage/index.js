@@ -47,38 +47,47 @@ const RecipePage = () => {
   }
   return (
     <>
-      <h1>Hello from Recipe Page</h1>
       <div className="recipe-container">
-        <div className="recipe-info-container">
-          <h2 className="recipe-title">{recipe?.title}</h2>
+        <div className="recipe-title-container">
+          <h1 className="recipe-title">{recipe?.title}</h1>
           <h3 className="recipe-author">By {recipeAuthor?.username}</h3>
-          <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
-          <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
-          <p className="recipe-description">{recipe?.description}</p>
-          <img src={recipeImage?.image_url} alt={recipeId}></img>
         </div>
-        <div className="recipe-ingredients-container">
-          <h3 className="recipe-ingredients-title">Ingredients</h3>
-          <ul className="recipe-ingredients-list">
-            {ingredients?.map((ingredient) => (
-              <li className="ingredient-item" key={ingredient.id}>
-                {ingredient.amount_unit} {ingredient.name}
-              </li>
-            ))}
-          </ul>
+        <hr></hr>
+        <div className="recipe-head-container">
+          <div className="recipe-info-container">
+            <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
+            <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
+            <p className="recipe-description">{recipe?.description}</p>          
+          </div>
+          <div className="recipe-image-container">
+              <img src={recipeImage?.image_url} alt={recipeId}></img>
+          </div>
         </div>
-        <div className="recipe-steps-container">
-          <h3 className="recipe-steps-title">Preparation</h3>
-          <ul className="recipe-steps-list">
-            {instructions?.map((instruction) => (
-              <>
-                <h4 className="instructions-step-num">
-                Step {instruction.step}
-                </h4>
-                <p className="instructions-step-content"> {instruction.content}</p>
-              </>
+        <hr></hr>
+        <div className="recipe-middle-container">
+          <div className="recipe-ingredients-container">
+            <h3 className="recipe-ingredients-title">Ingredients</h3>
+            <ul className="recipe-ingredients-list">
+              {ingredients?.map((ingredient) => (
+                <li className="ingredient-item" key={ingredient.id}>
+                  {ingredient.amount_unit} {ingredient.name}
+                </li>
               ))}
-          </ul>
+            </ul>
+          </div>
+          <div className="recipe-steps-container">
+            <h3 className="recipe-steps-title">Preparation</h3>
+            <ul className="recipe-steps-list">
+              {instructions?.map((instruction) => (
+                <>
+                  <h4 className="instructions-step-num">
+                  Step {instruction.step}
+                  </h4>
+                  <p className="instructions-step-content"> {instruction.content}</p>
+                </>
+                ))}
+            </ul>
+          </div>        
         </div>
       </div>
 

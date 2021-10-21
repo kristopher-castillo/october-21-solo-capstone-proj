@@ -43,6 +43,31 @@ def seed_instructions():
         content="Add the scallops back to the pan and pour any residual butter-sauce over top. Drizzle the dish with sesame oil and a good squeeze of lime. Top with scallions and sesame seeds, if using, and serve with rice.",
         recipe_id=2
     ),
+    instruction_9=Instructions(
+      step=1,
+      content="If grilling, heat the grill. If griddling, heat your griddle or pan to medium.",
+      recipe_id=3
+    ),
+    instruction_10=Instructions(
+      step=2,
+      content="Using a fork, mash strawberries with 1 tablespoon sugar until saucy with fine chunks.",
+      recipe_id=3
+    ),
+    instruction_11=Instructions(
+      step=3,
+      content="On a cutting board, open buns, leaving them connected on one edge. Brush the cut, flat surfaces with the melted butter and sprinkle lightly with sugar.",
+      recipe_id=3
+    ),
+    instruction_12=Instructions(
+      step=4,
+      content="Cook buns, buttered side up, until lightly toasted underneath, 1 to 2 minutes. Flip and toast the buttered sides until golden and the sugar caramelizes, imparting a nice sheen, 2 to 3 minutes. (You may need to rotate the buns to ensure even coloring and adjust heat lower, or move to a cooler spot if using a grill.) Transfer to a cutting board and let cool before assembling.",
+      recipe_id=3
+    ),
+    instruction_13=Instructions(
+      step=5,
+      content="Drizzle open buns with a little Amaro, if using. Top each bottom half with a spoonful of strawberry mash, followed by a single scoop of ice cream, then another spoonful of strawberry mash. Close up sandwiches and serve immediately.",
+      recipe_id=3
+    ),
   )
 
   for key in seeders:
