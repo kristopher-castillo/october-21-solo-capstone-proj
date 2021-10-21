@@ -15,7 +15,7 @@ class Recipe(db.Model):
 
   users = db.relationship("User", back_populates="recipes")
   notes = db.relationship("Note", back_populates="recipes", cascade="all, delete")
-  ingredients_info = db.relationship("Ingredients_Info", back_populates="recipes", cascade="all, delete")
+  ingredients_info = db.relationship("Ingredient_Info", back_populates="recipes", cascade="all, delete")
   instructions = db.relationship("Instructions", back_populates="recipes", cascade="all, delete")
   images = db.relationship("Image", back_populates="recipes", cascade="all, delete")
 
