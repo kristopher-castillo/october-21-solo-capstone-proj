@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request, redirect
-from app.models import Recipe, Ingredient, db
+from app.models import Recipe, Ingredient, Instructions, db
 from flask_login import current_user, login_required
 from app.forms import RecipeForm
 
@@ -110,7 +110,19 @@ def get_recipe_ingredients(id):
 
   ingredients = Ingredient.query.filter(Ingredient.recipe_id == id)
   
-
   return {
       'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
   }
+
+@recipe_routes.route('/<int:id>/instructions')
+def get_recipe_instructions(id):
+  """
+  Get all instructions associated with a specific id.
+  """
+
+  instructions = Instructions.query.filter(Instructions.recipe_id == id)
+  
+  return {
+      'recipe_instructions': [instruction.to_dict() for instruction in instructions]
+  }
+
