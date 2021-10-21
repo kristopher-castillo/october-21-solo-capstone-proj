@@ -22,8 +22,9 @@ const RecipePage = () => {
   useEffect(() => {
     dispatch(getImages())
   }, [dispatch])
-
-  document.title = recipe?.title
+  if (recipe.title) {
+    document.title = recipe?.title
+  }
   return (
     <>
       <h1>Hello from Recipe Page</h1>
@@ -35,6 +36,9 @@ const RecipePage = () => {
           <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
           <p className="recipe-description">{recipe?.description}</p>
           <img src={recipeImage?.image_url} alt={recipeId}></img>
+        </div>
+        <div className="recipe-ingredients-container">
+
         </div>
       </div>
 

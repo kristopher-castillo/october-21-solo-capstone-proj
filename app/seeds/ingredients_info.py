@@ -42,7 +42,52 @@ def seed_ingredients_info():
         amount_unit=1,
         ingredient_id=8,
         recipe_id=1
-    )
+    ),
+    recipe_2_scallops=Ingredient_Info(
+        amount_unit=1,
+        ingredient_id=9,
+        recipe_id=2
+    ),
+    recipe_2_oil=Ingredient_Info(
+        amount_unit=3,
+        ingredient_id=10,
+        recipe_id=2
+    ),
+    recipe_2_butter=Ingredient_Info(
+        amount_unit=2,
+        ingredient_id=11,
+        recipe_id=2
+    ),
+    recipe_2_soy=Ingredient_Info(
+        amount_unit=2,
+        ingredient_id=12,
+        recipe_id=2
+    ),
+    recipe_2_garlic=Ingredient_Info(
+        amount_unit=3,
+        ingredient_id=13,
+        recipe_id=2
+    ),
+    recipe_2_pepper=Ingredient_Info(
+        amount_unit=0.5,
+        ingredient_id=14,
+        recipe_id=2
+    ),
+    recipe_2_spinach=Ingredient_Info(
+        amount_unit=1.5,
+        ingredient_id=15,
+        recipe_id=2
+    ),
+    recipe_2_sesame=Ingredient_Info(
+        amount_unit=1,
+        ingredient_id=16,
+        recipe_id=2
+    ),
+    recipe_2_scallions=Ingredient_Info(
+        amount_unit=2,
+        ingredient_id=17,
+        recipe_id=2
+    ),
   )
 
   for key in seeders:
