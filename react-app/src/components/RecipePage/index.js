@@ -5,6 +5,7 @@ import { getOneRecipe } from "../../store/recipe";
 import { getImages } from "../../store/image";
 import { getRecipeIngredients } from "../../store/ingredient";
 import { getRecipeInstructions } from "../../store/instructions";
+import { getUsers } from "../../store/user";
 
 import "./RecipePage.css";
 
@@ -14,8 +15,11 @@ const RecipePage = () => {
   const images = useSelector((state) => state.images?.images?.all_images)
   const ingredients = useSelector((state) => state.ingredients?.ingredients?.recipe_ingredients)
   const instructions = useSelector((state) => state.instructions?.instructions?.recipe_instructions)
+  const users = useSelector((state) => state.users?.users?.users)
   const { recipeId } = useParams();
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId)
+  const recipeAuthor = users?.find((user) => recipe?.user_id === user.id)
+  console.log(recipeAuthor)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +38,10 @@ const RecipePage = () => {
     dispatch(getRecipeInstructions(recipeId))
   }, [dispatch, recipeId])
 
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [dispatch])
+
   if (recipe?.title) {
     document.title = recipe?.title
   }
@@ -43,7 +51,7 @@ const RecipePage = () => {
       <div className="recipe-container">
         <div className="recipe-info-container">
           <h2 className="recipe-title">{recipe?.title}</h2>
-          <h3 className="recipe-author">By Author</h3>
+          <h3 className="recipe-author">By {recipeAuthor?.username}</h3>
           <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
           <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
           <p className="recipe-description">{recipe?.description}</p>

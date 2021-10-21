@@ -5,9 +5,11 @@ import recipesReducer from './recipe';
 import imagesReducer from './image';
 import ingredientsReducer from './ingredient';
 import instructionsReducer from './instructions';
+import usersReducer from './user';
 
 const rootReducer = combineReducers({
   session,
+  users: usersReducer,
   recipes: recipesReducer,
   images: imagesReducer,
   ingredients: ingredientsReducer,
