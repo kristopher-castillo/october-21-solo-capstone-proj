@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request, redirect
-from app.models import Recipe, db
+from app.models import Recipe, Ingredient, Instructions, db
 from flask_login import current_user, login_required
 from app.forms import RecipeForm
 
@@ -65,7 +65,7 @@ def new_recipe():
 
 @recipe_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
-def edit_recipe():
+def edit_recipe(id):
   """
   Updates recipe content.
   """
@@ -89,7 +89,11 @@ def edit_recipe():
 
 @recipe_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
-def delete_recipe():
+def delete_recipe(id):
+  """
+  Delete a recipe by id.
+  """
+
   recipe_to_delete = Recipe.query.filter(Recipe.id == id).first()
   if current_user.get_id() == recipe_to_delete.user_id:
     db.session.delete(recipe_to_delete)
@@ -98,3 +102,27 @@ def delete_recipe():
       'deleted_recipe': recipe_to_delete.to_dict()
     }
   
+@recipe_routes.route('/<int:id>/ingredients')
+def get_recipe_ingredients(id):
+  """
+  Get all ingredients associated with a specific id.
+  """
+
+  ingredients = Ingredient.query.filter(Ingredient.recipe_id == id)
+  
+  return {
+      'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
+  }
+
+@recipe_routes.route('/<int:id>/instructions')
+def get_recipe_instructions(id):
+  """
+  Get all instructions associated with a specific id.
+  """
+
+  instructions = Instructions.query.filter(Instructions.recipe_id == id)
+  
+  return {
+      'recipe_instructions': [instruction.to_dict() for instruction in instructions]
+  }
+
