@@ -24,8 +24,35 @@ def seed_ingredients():
     ingredient_7=Ingredient(
         name="grated Parmesan, plus more for serving"
     ),
-    ingredient_8=Ingredient(
+      ingredient_8=Ingredient(
         name="lime, zested and juiced"
+    ),
+    ingredient_9=Ingredient(
+        name="large sea scallops, patted dry"
+    ),
+    ingredient_10=Ingredient(
+        name="grapeseed or canola oil, plus more as needed"
+    ),
+    ingredient_11=Ingredient(
+        name="unsalted butter"
+    ),
+    ingredient_12=Ingredient(
+        name="soy sauce"
+    ),
+    ingredient_13=Ingredient(
+        name="garlic cloves, thinly sliced"
+    ),
+    ingredient_14=Ingredient(
+        name="red-pepper flakes(optional)"
+    ),
+    ingredient_15=Ingredient(
+        name="baby spinach or other tender greens"
+    ),
+    ingredient_16=Ingredient(
+        name=" toasted sesame oil"
+    ),
+    ingredient_17=Ingredient(
+        name="thinly sliced scallion greens"
     )
   )
 
