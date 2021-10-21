@@ -26,6 +26,7 @@ class Recipe(db.Model):
       'description': self.description,
       'yield_amount': self.yield_amount,
       'completion_time': self.completion_time,
+      'user_id': self.user_id,
       'created_at': self.created_at,
       'updated_at': self.updated_at
     }

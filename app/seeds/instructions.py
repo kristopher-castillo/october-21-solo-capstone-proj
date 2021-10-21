@@ -18,6 +18,31 @@ def seed_instructions():
         content="When the squash is done, return the pasta to the pot over low heat. Scrape in squash, garlic and any liquid that accumulated, then add the Parmesan and 1/2 cup pasta water, stirring well until the noodles have a light sheen to them. If it appears dry, add more pasta water a tablespoon at a time until you reach your desired consistency. Stir in the lime zest and juice, season to taste with salt, and top with pepper and red-pepper flakes, if using. Serve with extra cheese.",
         recipe_id=1
     ),
+    instruction_4=Instructions(
+        step=1,
+        content="Heat the oven to 200 degrees. Season the scallops well with salt and pepper. Heat a 12-inch cast-iron skillet over medium-high. Add 2 tablespoons grapeseed oil and, when it shimmers, add the scallops. Cook undisturbed for 2 to 3 minutes, until they begin to brown and form a crust on the bottom.",
+        recipe_id=2
+    ),
+    instruction_5=Instructions(
+        step=2,
+        content="Flip the scallops, add the butter and soy sauce to the pan and use a spoon to repeatedly drizzle the sauce over the tops of the scallops to finish cooking, 1 to 2 minutes more.",
+        recipe_id=2
+    ),
+    instruction_6=Instructions(
+        step=3,
+        content="Set the scallops on an oven-safe plate and pour the butter mixture on top. Place the plate in the oven to keep the scallops warm while you finish the rest of the dish.",
+        recipe_id=2
+    ),
+    instruction_7=Instructions(
+        step=4,
+        content="Add the remaining 1 tablespoon grapeseed oil to the skillet and heat over medium. Add the garlic and red-pepper flakes, if using, and cook until the garlic is pale golden, about 2 minutes, adding a teaspoon or so more of grapeseed oil if needed. Return the heat to medium-high and add the spinach, in batches, if needed, and season with salt. Toss until the spinach wilts, adding a few teaspoons of water to help it along, if needed, and scrape the browned bits from the bottom of the pan. Turn off the heat.",
+        recipe_id=2
+    ),
+    instruction_8=Instructions(
+        step=5,
+        content="Add the scallops back to the pan and pour any residual butter-sauce over top. Drizzle the dish with sesame oil and a good squeeze of lime. Top with scallions and sesame seeds, if using, and serve with rice.",
+        recipe_id=2
+    ),
   )
 
   for key in seeders:
