@@ -10,7 +10,7 @@ class Ingredient(db.Model):
   updated_at = db.Column(
       db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-  ingredients_info = db.relationship("Ingredients_Info", back_populates="ingredients", cascade="all, delete")
+  ingredients_info = db.relationship("Ingredient_Info", back_populates="ingredients", cascade="all, delete")
 
 
   def to_dict(self):
