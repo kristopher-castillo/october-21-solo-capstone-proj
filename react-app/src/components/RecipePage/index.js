@@ -22,7 +22,7 @@ const RecipePage = () => {
   useEffect(() => {
     dispatch(getImages())
   }, [dispatch])
-  if (recipe.title) {
+  if (recipe?.title) {
     document.title = recipe?.title
   }
   return (
