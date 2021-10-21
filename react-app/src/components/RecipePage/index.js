@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOneRecipe } from "../../store/recipe";
 import { getImages } from "../../store/image";
+import { getRecipeIngredients } from "../../store/ingredient";
 
 import "./RecipePage.css";
 
@@ -22,6 +23,11 @@ const RecipePage = () => {
   useEffect(() => {
     dispatch(getImages())
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getRecipeIngredients(recipeId))
+  }, [dispatch, recipeId])
+
   if (recipe?.title) {
     document.title = recipe?.title
   }
@@ -38,7 +44,7 @@ const RecipePage = () => {
           <img src={recipeImage?.image_url} alt={recipeId}></img>
         </div>
         <div className="recipe-ingredients-container">
-
+        
         </div>
       </div>
 

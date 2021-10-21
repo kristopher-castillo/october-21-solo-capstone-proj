@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .recipes import seed_recipes, undo_recipes
 from .images import seed_images, undo_images
-from .ingredients_info import seed_ingredients_info, undo_ingredients_info
+# from .ingredients_info import seed_ingredients_info, undo_ingredients_info
 from .ingredients import seed_ingredients, undo_ingredients
 from .instructions import seed_instructions, undo_instructions
 
@@ -19,7 +19,7 @@ def seed():
     seed_images()
     seed_instructions()
     seed_ingredients()
-    seed_ingredients_info()
+    # seed_ingredients_info()
 
     # Add other seed functions here
 
@@ -32,6 +32,6 @@ def undo():
     undo_images()
     undo_instructions()
     undo_ingredients()
-    undo_ingredients_info()
+    # undo_ingredients_info()
 
     # Add other undo functions here
