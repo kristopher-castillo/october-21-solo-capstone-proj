@@ -1,0 +1,36 @@
+.home-container {
+  background-color: #f2f3ef;
+  width: 100%;
+  height: 100%;
+}
+
+.home-header-image-container {
+  width: 100%;
+  height: 100%;
+}
+
+.home-header-image {
+  width: 100%;
+  height: 100%;
+}
+
+.home-body-container {
+  margin-top: -250px;
+  width: 100%;
+  height: 500px;
+  z-index: 2;
+  background-color: #f2f3ef;
+  position: relative;
+}
+
+.home-what-to-cook {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 300px;
+}
+
+.what-to-cook-break {
+  border: 2px solid black;
+}
