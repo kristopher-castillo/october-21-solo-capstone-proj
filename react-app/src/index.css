@@ -4,8 +4,3 @@ body {
   font: 14px Georgia, 'Times New Roman', Times, serif;
 }
 
-nav {
-  position: fixed;
-  background-color: white;
-  width: 100%;
-}
