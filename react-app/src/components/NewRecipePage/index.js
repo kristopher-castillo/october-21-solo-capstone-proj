@@ -127,6 +127,7 @@ const NewRecipePage = () => {
             </ul> */}
           </div>
         </div>
+        <button>Submit</button>
       </div>
     </>
   );
