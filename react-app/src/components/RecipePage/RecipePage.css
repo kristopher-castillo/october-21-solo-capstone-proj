@@ -6,7 +6,8 @@ align-items: center;
 
 .recipe-head-container{
   display: flex;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   width: 70vw;
 }
 
