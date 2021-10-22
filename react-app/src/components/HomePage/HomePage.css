@@ -23,6 +23,7 @@
   align-items: center;
   color: white;
   z-index: 3;
+  font-weight: bolder;
 }
 
 .header-recipe-card {
@@ -33,6 +34,25 @@
   top: 350px;
   left: 125px;
   z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.header-recipe-title {
+  font-size: 2.5rem;
+}
+
+.header-recipe-blurb {
+  font-size: 1.3rem;
+}
+
+.header-recipe-author {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 
