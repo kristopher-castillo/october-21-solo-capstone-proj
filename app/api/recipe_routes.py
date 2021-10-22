@@ -70,18 +70,18 @@ def edit_recipe(id):
   Updates recipe content.
   """
 
-  recipe = Recipe.query.filter(Recipe.id == id).first()
+  updated_recipe = Recipe.query.filter(Recipe.id == id).first()
   form = RecipeForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit() & current_user.get_id() == recipe.user_id:
+  if form.validate_on_submit() & current_user.get_id() == updated_recipe.user_id:
     data = form.data
-    recipe.title = data['title'],
-    recipe.description=data['description'],
-    recipe.yield_amount=data['yield_amount'],
-    recipe.completion_time=data['completion_time'],
-    recipe.user_id=recipe.user_id
+    updated_recipe.title = data['title'],
+    updated_recipe.description=data['description'],
+    updated_recipe.yield_amount=data['yield_amount'],
+    updated_recipe.completion_time=data['completion_time'],
+    updated_recipe.user_id=updated_recipe.user_id
     db.session.commit()
-    return recipe.to_dict()
+    return updated_recipe.to_dict()
   else:
     print('RECIPE UPDATE FORM FAILED')
     return {'errors': validation_errors_to_error_messages(form.errors)}
@@ -95,12 +95,11 @@ def delete_recipe(id):
   """
 
   recipe_to_delete = Recipe.query.filter(Recipe.id == id).first()
-  if current_user.get_id() == recipe_to_delete.user_id:
-    db.session.delete(recipe_to_delete)
-    db.session.commit()
-    return {
-      'deleted_recipe': recipe_to_delete.to_dict()
-    }
+  db.session.delete(recipe_to_delete)
+  db.session.commit()
+  return {
+    'deleted_recipe': recipe_to_delete.to_dict()
+  }
   
 @recipe_routes.route('/<int:id>/ingredients')
 def get_recipe_ingredients(id):
