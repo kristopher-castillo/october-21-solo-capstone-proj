@@ -8,9 +8,15 @@ nav {
   border-bottom: 0.1rem solid #DCDEDD;
   font-size: 14px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  z-index: 8;
 }
 
+.logo-link {
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+}
 .nav-logo-button{
   width: 180px;
   height: 45px;
@@ -18,8 +24,8 @@ nav {
   background-size: 20%;
   background-repeat: no-repeat;
   cursor: pointer;
-  align-items: center;
-  justify-content: space-around;
+  /* align-items: center; */
+  /* justify-content: space-around; */
   border: none;
   background-color: transparent;
 }

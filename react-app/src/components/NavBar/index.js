@@ -9,12 +9,10 @@ const NavBar = () => {
     <nav>
     
       <div className="nav-logo-container">
-        <NavLink to='/' exact={true} activeClassName='active'>
+        <NavLink to='/' exact={true} activeClassName='logo-link'>
           <button className="nav-logo-button"></button>
+          <p className="nav-logo-text">|Cooking</p>
         </NavLink>
-      </div>
-      <div>
-        <p className="nav-logo-text">|Cooking</p>
       </div>
       <li>
         <NavLink to='/login' exact={true} activeClassName='active'>
