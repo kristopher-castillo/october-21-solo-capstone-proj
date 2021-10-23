@@ -1,0 +1,84 @@
+.home-container {
+  background-color: #f2f3ef;
+  width: 100%;
+  height: 100%;
+}
+
+.home-header-image-container {
+  width: 100%;
+  height: 100%;
+}
+
+.recipe-badge {
+  background-color: #00CE8E;
+  position: absolute;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  height: 100px;
+  width: 100px;
+  top: 300px;
+  left: 75px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  z-index: 3;
+  font-weight: bolder;
+}
+
+.header-recipe-card {
+  background-color: white;
+  position: absolute;
+  height: 300px;
+  width: 350px;
+  top: 350px;
+  left: 125px;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.header-recipe-title {
+  font-size: 2.5rem;
+}
+
+.header-recipe-blurb {
+  font-size: 1.3rem;
+}
+
+.header-recipe-author {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+.home-header-image {
+  width: 100%;
+  height: 100%;
+}
+
+.home-body-container {
+  margin-top: -200px;
+  width: 100%;
+  height: 500px;
+  z-index: 4;
+  background-color: #f2f3ef;
+  position: relative;
+}
+
+.home-what-to-cook {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 300px;
+}
+
+.what-to-cook-break {
+  border: 2px solid black;
+  width: 50%;
+}
