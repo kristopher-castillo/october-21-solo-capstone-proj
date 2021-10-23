@@ -11,14 +11,17 @@ const NewRecipePage = () => {
   const [time, setTime] = useState(0);
   const [description, setDescription] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
+  const history = useHistory();
 
   const dispatch = useDispatch()
 
   return (
     <>
-      <h1>New Recipe Page</h1>
+      
       <div className="new-recipe-container">
+        <h1>New Recipe Page</h1>
         <div className="new-recipe-title-container">
+          <label>Recipe Title:</label>
           <input
             className="new-recipe-title"
             type="text"
@@ -127,7 +130,17 @@ const NewRecipePage = () => {
             </ul> */}
           </div>
         </div>
-        <button>Submit</button>
+        <div className="new-recipe-buttons-container">
+          <button className="new-recipe-submit-btn">Submit</button>
+          <button
+            type="button"
+            className="new-recipe-cancel-btn"
+            // onClick={history.push('/')}
+          >
+            Cancel
+          </button>
+        </div>
+        
       </div>
     </>
   );
