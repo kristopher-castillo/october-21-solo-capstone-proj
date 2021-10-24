@@ -60,7 +60,7 @@ const RecipePage = () => {
             <p className="recipe-description">{recipe?.description}</p>          
           </div>
           <div className="recipe-image-container">
-              <img src={recipeImage?.image_url} alt={recipeId}></img>
+              <img className="recipe-image" src={recipeImage?.image_url} alt={recipeId}></img>
           </div>
         </div>
         <hr></hr>
