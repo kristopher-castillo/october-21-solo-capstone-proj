@@ -1,0 +1,11 @@
+.new-ingredients-page-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100%;
+padding-top: 75px;
+}
+
+.new-ingredients-container {
+  width: 70vw;
+}
