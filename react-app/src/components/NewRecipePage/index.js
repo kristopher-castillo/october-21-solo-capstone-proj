@@ -15,7 +15,7 @@ const NewRecipePage = () => {
 
   const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     const newRecipe = {
@@ -25,8 +25,8 @@ const NewRecipePage = () => {
       completion_time
     }
 
-    dispatch(createRecipe(newRecipe))
-
+    const createdRecipe = await dispatch(createRecipe(newRecipe))
+    history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
   }
 
   return (
@@ -91,66 +91,10 @@ const NewRecipePage = () => {
           <div className="new-recipe-buttons-container">
             <button className="new-recipe-submit-btn">Submit</button>
             <Link to="/">
-              <button className="new-recipe-cancel-btn">Cancel</button>
+              <button type="button" className="new-recipe-cancel-btn">Cancel</button>
             </Link>
           </div>
         </form>
-        {/* <hr></hr>
-        <div className="new-recipe-middle-container">
-          <div className="new-recipe-ingredients-container">
-            <h3 className="new-recipe-ingredients-title">Ingredients</h3>
-            <label>Ingredient Name: </label>
-            <input
-              className="new-recipe-ingredient"
-              type="text"
-              name="ingredient"
-            ></input>
-            <label>Amount: </label>
-            <input
-              className="new-recipe-ingredient-amount"
-              type="number"
-              min="1"
-              max="100"
-              name="ingredient-amount"
-            ></input>
-            <ul className="new-recipe-ingredients-list">
-              {ingredients?.map((ingredient) => (
-                <li className="ingredient-item" key={ingredient.id}>
-                  {ingredient.amount_unit} {ingredient.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="new-recipe-steps-container">
-            <h3 className="new-recipe-steps-title">Preparation</h3>
-            <textarea
-              className="new-recipe-step-text"
-              name="step"
-              placeholder="Add a step to your recipe here."
-            ></textarea>
-            <label>Step Number: </label>
-            <input
-              className="new-recipe-step-num"
-              type="number"
-              min="1"
-              max="10"
-              name="step"
-            ></input>
-            <ul className="new-recipe-steps-list">
-              {instructions?.map((instruction) => (
-                <>
-                  <h4 className="instructions-step-num">
-                    Step {instruction.step}
-                  </h4>
-                  <p className="instructions-step-content">
-                    {" "}
-                    {instruction.content}
-                  </p>
-                </>
-              ))}
-            </ul>
-          </div>
-        </div> */}
       </div>
     </>
   );

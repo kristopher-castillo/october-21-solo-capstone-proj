@@ -24,6 +24,7 @@ const NewRecipeIngredientsPage = () => {
     };
 
     dispatch(createIngredient(newIngredient));
+    history.push(`/recipes/new/${recipeId}/instructions`)
   };
 
   return (
@@ -66,7 +67,7 @@ const NewRecipeIngredientsPage = () => {
           <div className="new-ingredients-buttons-container">
             <button className="new-ingredients-submit-btn">Submit</button>
             <Link to="/">
-              <button className="new-ingredients-cancel-btn">Cancel</button>
+              <button className="new-ingredients-cancel-btn" type="button">Cancel</button>
             </Link>
           </div>
         </form>

@@ -24,6 +24,7 @@ const NewRecipeInstructionsPage = () => {
       };
 
       dispatch(createInstructions(newInstructions));
+      history.push(`/recipes/${recipeId}`)
     };
 
   return (
