@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect, Link } from "react-router-dom";
-import { createInstructions } from "../../store/instructions";
+import { createInstructions, getRecipeInstructions } from "../../store/instructions";
 
 import "./NewRecipeInstructionsPage.css";
 
@@ -9,28 +9,60 @@ const NewRecipeInstructionsPage = () => {
   const [step, setStep] = useState(1)
   const [content, setContent] = useState("")
   const sessionUser = useSelector((state) => state.session.user);
+  const instructions = useSelector((state) => state.instructions?.instructions?.recipe_instructions);
+
   const history = useHistory();
   const { recipeId } = useParams();
 
   const dispatch = useDispatch();
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
+  useEffect(() => {
+    dispatch(getRecipeInstructions(recipeId));
+  }, [dispatch, recipeId]);
 
-      const newInstructions = {
-        step,
-        content,
-        recipe_id: recipeId
-      };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      dispatch(createInstructions(newInstructions));
-      history.push(`/recipes/${recipeId}`)
+    const newInstructions = {
+      step,
+      content,
+      recipe_id: recipeId
     };
+
+    await dispatch(createInstructions(newInstructions));
+    await dispatch(getRecipeInstructions(recipeId))
+  };
+
+  const recipeHasInstructions = instructions?.some(
+    (ingredient) => ingredient.recipe_id === +recipeId
+  );
+
+  const NextButton = () => {
+    if (recipeHasInstructions) {
+      return (
+        <Link to={`/recipes/${recipeId}`}>
+          <button type="button">Next</button>
+        </Link>
+      );
+    }
+    return null;
+  };
 
   return (
     <>
       <div className="new-instructions-page-container">
         <h1>New Instructions Page</h1>
+        <ul className="new-recipe-steps-list">
+          {instructions?.map((instruction) => (
+            <>
+              <h4 className="instructions-step-num">Step {instruction.step}</h4>
+              <p className="instructions-step-content">
+                {" "}
+                {instruction.content}
+              </p>
+            </>
+          ))}
+        </ul>
         <form onSubmit={handleSubmit}>
           <div className="new-instructions-container">
             <h3 className="new-instructions-title">Preparation</h3>
@@ -55,25 +87,13 @@ const NewRecipeInstructionsPage = () => {
               }}
               value={step}
             ></input>
-            {/* <ul className="new-recipe-steps-list">
-            {instructions?.map((instruction) => (
-              <>
-                <h4 className="instructions-step-num">
-                  Step {instruction.step}
-                </h4>
-                <p className="instructions-step-content">
-                  {" "}
-                  {instruction.content}
-                </p>
-              </>
-            ))}
-          </ul> */}
           </div>
           <div className="new-instructions-buttons-container">
-            <button className="new-instructions-submit-btn">Submit</button>
+            <button className="new-instructions-submit-btn">Add Step</button>
             <Link to="/">
               <button className="new-instructions-cancel-btn">Cancel</button>
             </Link>
+            <NextButton />
           </div>
         </form>
       </div>

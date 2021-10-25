@@ -112,7 +112,7 @@ const NewRecipePage = () => {
             </div>
           </div>
           <div className="new-recipe-buttons-container">
-            <button className="new-recipe-submit-btn">Submit</button>
+            <button className="new-recipe-submit-btn">Next</button>
             <Link to="/">
               <button type="button" className="new-recipe-cancel-btn">
                 Cancel
