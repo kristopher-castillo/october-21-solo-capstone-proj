@@ -12,6 +12,9 @@ import NewRecipePage from './components/NewRecipePage';
 import HomePage from './components/HomePage';
 import NewRecipeIngredientsPage from './components/NewRecipeIngredientsPage';
 import NewRecipeInstructionsPage from './components/NewRecipeInstructionsPage';
+import EditRecipePage from './components/EditRecipePage';
+import EditRecipeIngredientsPage from './components/EditRecipeIngredientsPage';
+import EditRecipeInstructionsPage from './components/EditRecipeInstructionsPage';
 
 import { authenticate } from './store/session';
 
@@ -54,6 +57,15 @@ function App() {
         </Route>
         <Route path='/recipes/:recipeId' exact={true}>
           <RecipePage />
+        </Route>
+        <Route path='/recipes/edit/:recipeId' exact={true}>
+          <EditRecipePage />
+        </Route>
+        <Route path='/recipes/edit/:recipeId/ingredients' exact={true}>
+          <EditRecipeIngredientsPage />
+        </Route>
+        <Route path='/recipes/edit/:recipeId/instructions' exact={true}>
+          <EditRecipeInstructionsPage />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

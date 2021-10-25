@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect, Link } from "react-router-dom";
 import { createRecipe } from "../../store/recipe";
+import { createImage } from "../../store/image";
 
 import "./NewRecipePage.css";
 
@@ -10,6 +11,7 @@ const NewRecipePage = () => {
   const [yield_amount, setYieldAmount] = useState(1);
   const [completion_time, setTime] = useState(0);
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("")
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
 
@@ -24,8 +26,14 @@ const NewRecipePage = () => {
       yield_amount,
       completion_time
     }
-
     const createdRecipe = await dispatch(createRecipe(newRecipe))
+
+    const imageData = new FormData();
+    imageData.append("image", image)
+    imageData.append("recipe_id", createdRecipe.id);
+    
+    dispatch(createImage(imageData))
+
     history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
   }
 
@@ -45,6 +53,7 @@ const NewRecipePage = () => {
                 setTitle(e.target.value);
               }}
               value={title}
+              required
             ></input>
           </div>
           <hr></hr>
@@ -81,17 +90,25 @@ const NewRecipePage = () => {
                   setDescription(e.target.value);
                 }}
                 value={description}
+                required
               ></textarea>
             </div>
             <div className="new-recipe-image-container">
-              {/* <img src={recipeImage?.image_url} alt={recipeId}></img> */}
-              IMAGE UPLOAD HERE
+              <p className="card-text">Choose an image for your recipe</p>
+              <input
+                type="file"
+                name="file"
+                onChange={(e) => setImage(e.target.files[0])}
+                required
+              ></input>
             </div>
           </div>
           <div className="new-recipe-buttons-container">
-            <button className="new-recipe-submit-btn">Submit</button>
+            <button className="new-recipe-submit-btn">Next</button>
             <Link to="/">
-              <button type="button" className="new-recipe-cancel-btn">Cancel</button>
+              <button type="button" className="new-recipe-cancel-btn">
+                Cancel
+              </button>
             </Link>
           </div>
         </form>

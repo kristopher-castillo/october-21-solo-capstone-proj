@@ -31,6 +31,11 @@ padding-top: 75px;
   padding-left: 20px;
 }
 
+.recipe-image {
+  max-width: 50vw;
+  max-height: 50vh;
+}
+
 .recipe-middle-container{
   display: flex;
   padding-top: 40px;

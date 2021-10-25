@@ -73,7 +73,7 @@ def edit_recipe(id):
   updated_recipe = Recipe.query.filter(Recipe.id == id).first()
   form = RecipeForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit() & current_user.get_id() == updated_recipe.user_id:
+  if form.validate_on_submit():
     data = form.data
     updated_recipe.title = data['title'],
     updated_recipe.description=data['description'],

@@ -12,22 +12,27 @@ nav {
   z-index: 8;
 }
 
+.nav-logo-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .logo-link {
   display: flex;
   flex-direction: row;
   width: 100px;
 }
+
 .nav-logo-button{
   width: 180px;
   height: 45px;
-  background-image: url("logo.png");
+  /* background-image: url("logo.png");
   background-size: 20%;
-  background-repeat: no-repeat;
-  cursor: pointer;
+  background-repeat: no-repeat; */
   /* align-items: center; */
   /* justify-content: space-around; */
-  border: none;
-  background-color: transparent;
+  /* border: none;
+  background-color: transparent; */
 }
 
 .nav-logo-text{

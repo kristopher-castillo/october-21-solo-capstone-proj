@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getOneRecipe } from "../../store/recipe";
+import { getOneRecipe, deleteRecipe } from "../../store/recipe";
 import { getImages } from "../../store/image";
 import { getRecipeIngredients } from "../../store/ingredient";
 import { getRecipeInstructions } from "../../store/instructions";
@@ -19,7 +19,7 @@ const RecipePage = () => {
   const { recipeId } = useParams();
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId)
   const recipeAuthor = users?.find((user) => recipe?.user_id === user.id)
-  console.log(recipeAuthor)
+  const history = useHistory()
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,12 +45,47 @@ const RecipePage = () => {
   if (recipe?.title) {
     document.title = recipe?.title
   }
+
+  const handleDeleteRecipe = () => {
+    dispatch(deleteRecipe(recipeId))
+  }
+
+  function EditDeleteRecipe() {
+    if (sessionUser && recipe?.user_id === sessionUser?.id) {
+      return (
+        <div className="edit-delete-container">
+          <button
+            className="edit-button"
+            type="button"
+            onClick={() => {
+              history.push(`/recipes/edit/${recipeId}`);
+            }}
+          >
+            Edit Recipe
+          </button>
+          <button
+            className="delete-button"
+            type="button"
+            onClick={() => {
+              handleDeleteRecipe(recipeId);
+              history.push("/");
+            }}
+          >
+            Delete this Recipe
+          </button>
+        </div>
+      );
+    }
+    return null;
+  }
+
   return (
     <>
       <div className="recipe-container">
         <div className="recipe-title-container">
           <h1 className="recipe-title">{recipe?.title}</h1>
           <h3 className="recipe-author">By {recipeAuthor?.username}</h3>
+          <EditDeleteRecipe />
         </div>
         <hr></hr>
         <div className="recipe-head-container">
@@ -60,7 +95,7 @@ const RecipePage = () => {
             <p className="recipe-description">{recipe?.description}</p>          
           </div>
           <div className="recipe-image-container">
-              <img src={recipeImage?.image_url} alt={recipeId}></img>
+              <img className="recipe-image" src={recipeImage?.image_url} alt={recipeId}></img>
           </div>
         </div>
         <hr></hr>
@@ -90,10 +125,7 @@ const RecipePage = () => {
           </div>        
         </div>
       </div>
-
     </>
-    
-
   )
 }
 

@@ -7,10 +7,9 @@ import "./NavBar.css"
 const NavBar = () => {
   return (
     <nav>
-    
       <div className="nav-logo-container">
         <NavLink to='/' exact={true} activeClassName='logo-link'>
-          <button className="nav-logo-button"></button>
+          {/* <button className="nav-logo-button"></button> */}
           <p className="nav-logo-text">|Cooking</p>
         </NavLink>
       </div>
@@ -30,7 +29,7 @@ const NavBar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to='/recipes/2' exact={true} activeClassName='active'>
+        <NavLink to='/recipes/1' exact={true} activeClassName='active'>
           Recipe
         </NavLink>
       </li>
