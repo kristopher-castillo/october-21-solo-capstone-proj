@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request, redirect
-from app.models import Recipe, Ingredient, Instructions, db
+from app.models import Recipe, Ingredient, Instructions, Note, db
 from flask_login import current_user, login_required
 from app.forms import RecipeForm
 
@@ -123,5 +123,17 @@ def get_recipe_instructions(id):
   
   return {
       'recipe_instructions': [instruction.to_dict() for instruction in instructions]
+  }
+
+@recipe_routes.route('/<int:id>/notes')
+def get_recipe_instructions(id):
+  """
+  Get all notes associated with a specific id.
+  """
+
+  notes = Note.query.filter(Note.recipe_id == id)
+  
+  return {
+      'recipe_notes': [note.to_dict() for note in notes]
   }
 
