@@ -1,46 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams, Redirect, Link } from "react-router-dom";
-import { createRecipe } from "../../store/recipe";
-import { createImage } from "../../store/image";
+import { updateRecipe } from "../../store/recipe";
+import { updateImage } from "../../store/image";
 
-import "./NewRecipePage.css";
+import "./EditRecipePage.css";
 
-const NewRecipePage = () => {
+const EditRecipePage = () => {
   const [title, setTitle] = useState("");
   const [yield_amount, setYieldAmount] = useState(1);
   const [completion_time, setTime] = useState(0);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+  const {recipeId} = useParams()
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const newRecipe = {
+    const updatedRecipe = {
       title,
       description,
       yield_amount,
-      completion_time
-    }
-    const createdRecipe = await dispatch(createRecipe(newRecipe))
+      completion_time,
+    };
+    const createdRecipe = await dispatch(updateRecipe(updatedRecipe, recipeId));
 
-    const imageData = new FormData();
-    imageData.append("image", image)
-    imageData.append("recipe_id", createdRecipe.id);
-    
-    dispatch(createImage(imageData))
+    const updatedImageData = new FormData();
+    updatedImageData.append("image", image);
+    updatedImageData.append("recipe_id", createdRecipe.id);
 
-    history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
-  }
+    dispatch(updateImage(updatedImageData));
+
+    history.push(`/recipes/new/${createdRecipe.id}/ingredients`);
+  };
 
   return (
     <>
       <div className="new-recipe-container">
-        <h1>New Recipe Page</h1>
+        <h1>Edit Recipe Page</h1>
         <form onSubmit={handleSubmit} id="new-recipe-form">
           <div className="new-recipe-title-container">
             <label>Recipe Title:</label>
@@ -115,6 +116,8 @@ const NewRecipePage = () => {
       </div>
     </>
   );
-}
 
-export default NewRecipePage;
+
+};
+
+export default EditRecipePage;
