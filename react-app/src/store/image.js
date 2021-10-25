@@ -44,8 +44,7 @@ export const createImage = (imageData) => async (dispatch) => {
 export const updateImage = (imageData, imageId) => async (dispatch) => {
   const response = await fetch(`/api/images/${imageId}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(imageData),
+    body: imageData,
   });
 
   if (response.ok) {

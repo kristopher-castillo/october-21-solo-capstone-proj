@@ -45,7 +45,7 @@ def new_image():
     """
     Creates a new image.
     """
-    
+
     form = ImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -82,13 +82,23 @@ def update_image(id):
     form = ImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        data = form.data        
-        updated_image.image_url = data["image_url"],
-        updated_image.recipe_id = data["recipe_id"]
-        db.session.commit()
-        return updated_image.to_dict()
-    else:
-        return {'errors': validation_errors_to_error_messages(form.errors)}
+        img = request.files['image']
+        if img:
+            filename = secure_filename(img.filename)
+            img.save(filename)
+            s3.upload_file(
+                Bucket=BUCKET_NAME,
+                Filename=filename,
+                Key=filename
+            )
+            url = f"https://{BUCKET_NAME}.s3.amazonaws.com/{filename}"
+
+            updated_image.image_url=url
+            updated_image.recipe_id = request.form["recipe_id"]
+            db.session.commit()
+            return updated_image.to_dict()
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}
 
 @image_routes.route('/<int:id>', methods=['DELETE'])
 @login_required

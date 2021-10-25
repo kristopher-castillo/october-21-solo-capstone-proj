@@ -58,7 +58,7 @@ const RecipePage = () => {
             className="edit-button"
             type="button"
             onClick={() => {
-              history.push(`/recipes/${recipeId}/edit`);
+              history.push(`/recipes/edit/${recipeId}`);
             }}
           >
             Edit Recipe
