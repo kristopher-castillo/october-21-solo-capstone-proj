@@ -26,7 +26,7 @@ def get_notes():
       'all_notes': [note.to_dict() for note in notes]
   }
 
-@note_routes.route('/<int:id')
+@note_routes.route('/<int:id>')
 def get_one_note(id):
   """
   Get one note based on id.

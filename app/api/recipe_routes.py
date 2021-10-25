@@ -126,7 +126,7 @@ def get_recipe_instructions(id):
   }
 
 @recipe_routes.route('/<int:id>/notes')
-def get_recipe_instructions(id):
+def get_recipe_notes(id):
   """
   Get all notes associated with a specific id.
   """

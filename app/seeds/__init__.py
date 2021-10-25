@@ -1,4 +1,6 @@
 from flask.cli import AppGroup
+
+from app.seeds.notes import seed_notes, undo_notes
 from .users import seed_users, undo_users
 from .recipes import seed_recipes, undo_recipes
 from .images import seed_images, undo_images
@@ -19,6 +21,7 @@ def seed():
     seed_images()
     seed_instructions()
     seed_ingredients()
+    seed_notes()
     # seed_ingredients_info()
 
     # Add other seed functions here
@@ -32,6 +35,7 @@ def undo():
     undo_images()
     undo_instructions()
     undo_ingredients()
+    undo_notes()
     # undo_ingredients_info()
 
     # Add other undo functions here
