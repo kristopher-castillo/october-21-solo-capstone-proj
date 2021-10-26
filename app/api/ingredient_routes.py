@@ -51,7 +51,7 @@ def update_ingredient(id):
     data = form.data
     updated_ingredient.name=data["name"],
     updated_ingredient.amount_unit=data["amount_unit"],
-    updated_ingredient. recipe_id=data["recipe_id"]
+    updated_ingredient.recipe_id=data["recipe_id"]
     db.session.commit()
     return updated_ingredient.to_dict()
   else:
