@@ -52,7 +52,11 @@ def new_note():
     )
     db.session.add(new_note)
     db.session.commit()
-    return new_note.to_dict()
+
+    notes = Note.query.filter(Note.recipe_id == data['recipe_id'])
+    return {
+        'recipe_notes': [note.to_dict() for note in notes]
+    }
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
@@ -71,7 +75,11 @@ def update_note(id):
     updated_note.user_id = updated_note.user_id,
     updated_note.recipe_id = updated_note.recipe_id
     db.session.commit()
-    return updated_note.to_dict()
+
+    notes = Note.query.filter(Note.recipe_id == updated_note.recipe_id)
+    return {
+        'recipe_notes': [note.to_dict() for note in notes]
+    }
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
@@ -81,9 +89,12 @@ def delete_note(id):
   """
   Deletes a note by id.
   """
+  recipe_id = int(request.data.decode("utf-8"))
   note_to_delete = Note.query.filter(Note.id == id).first()
   db.session.delete(note_to_delete)
   db.session.commit()
+
+  notes = Note.query.filter(Note.recipe_id == recipe_id)
   return {
-    'deleted_note': note_to_delete.to_dict()
+      'recipe_notes': [note.to_dict() for note in notes]
   }

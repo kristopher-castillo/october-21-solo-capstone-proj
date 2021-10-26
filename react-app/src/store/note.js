@@ -28,6 +28,17 @@ export const getRecipeNotes = (recipeId) => async (dispatch) => {
   }
 };
 
+export const getAllNotes = () => async (dispatch) => {
+  const response = await fetch(`/api/notes/`);
+
+  if (response.ok) {
+    const notes = await response.json();
+    dispatch(load(notes));
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 export const createNote = (noteData) => async (dispatch) => {
   const response = await fetch("/api/notes/", {
     method: "POST",
@@ -57,10 +68,11 @@ export const updateNote =
     }
   };
 
-export const deleteNote = (noteId) => async (dispatch) => {
+export const deleteNote = (noteId, recipeId) => async (dispatch) => {
   const response = await fetch(`/api/notes/${noteId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
+    body: recipeId
   });
 
   if (response.ok) {

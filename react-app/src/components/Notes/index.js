@@ -1,43 +1,72 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { getRecipeNotes } from "../../store/note";
+import { useParams } from "react-router-dom";
+import { getRecipeNotes, createNote } from "../../store/note";
+import NotesButtons from "./NotesButtons";
 
 import "./Notes.css"
 
 const Notes = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const [content, setContent] = useState("")
   const { recipeId } = useParams();
   const notes = useSelector((state) => state.notes?.notes?.recipe_notes)
-  const history = useHistory();
+  const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getRecipeNotes(recipeId))
   }, [dispatch, recipeId])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const newNote = {
+      content,
+      recipe_id: recipeId
+    }
+    dispatch(createNote(newNote))
+  }
+
   return (
     <>
       <div className="notes-container">
-        <h1>Notes Section</h1>
+        <h4>Notes Section</h4>
         <div className="new-note-box">
-          <form className="note-form">
+          <form className="note-form" onSubmit={handleSubmit}>
             <textarea
               className="new-note-text"
               rows="5"
+              onChange={(e) => {
+                setContent(e.target.value)
+              }}
+              value={content}
               required
             >
             </textarea>
-            <div className="note-submit-btn">
-              Post Note
+            <div className="note-submit-btn-container">
+              <button className="note-submit-btn">Post Note</button>
             </div>
           </form>
         </div>
+        <div className="notes-list-container">
         {notes?.map((note) => (
-          <div className="notes-list-container">
-            
-          </div>   
+          <div className="notes-item" key={note?.id}>
+            <div className="note-top-container">
+              <div className="note-content">{note?.content}</div>
+              <div className="edit-note-content"></div>
+              <div className="note-user">{users?.find((user) => note?.user_id === user.id).username}</div>
+            </div>
+            <div className="note-btn-container">
+              <NotesButtons
+                isNotesUser={note?.user_id === sessionUser.id}
+                deleteId={note?.id}
+                recipeId={recipeId}
+              />
+            </div>
+          </div>
         ))}
+        </div>   
       </div>
     </>
   )

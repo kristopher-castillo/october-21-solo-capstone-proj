@@ -6,6 +6,7 @@ import { getImages } from "../../store/image";
 import { getRecipeIngredients } from "../../store/ingredient";
 import { getRecipeInstructions } from "../../store/instructions";
 import { getUsers } from "../../store/user";
+import Notes from "../Notes";
 
 import "./RecipePage.css";
 
@@ -123,6 +124,9 @@ const RecipePage = () => {
                 ))}
             </ul>
           </div>        
+        </div>
+        <div className="recipe-notes-container">
+          <Notes />
         </div>
       </div>
     </>
