@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteNote } from "../../store/note";
 
 
-const NotesButtons = ({isNotesUser, deleteId, recipeId}) => {
+const NotesButtons = ({isNotesUser, deleteId, recipeId, hideContent, hideEdit}) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -14,7 +14,8 @@ const NotesButtons = ({isNotesUser, deleteId, recipeId}) => {
           className="edit-button"
           type="button"
           onClick={() => {
-            
+            hideContent(true)
+            hideEdit(false)
           }}
         >
           Edit Note
