@@ -26,6 +26,16 @@ def seed_notes():
       content="I made this with vegan cheese and no salt and it tasted awful.",
       user_id=3,
       recipe_id=2
+    ),
+    note_6=Note(
+      content="Try this with olives, lots of olives.",
+      user_id=3,
+      recipe_id=4
+    ),
+    note_7=Note(
+      content="I don't like cheese, tbh.",
+      user_id=1,
+      recipe_id=4
     )
   )
 

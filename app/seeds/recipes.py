@@ -22,6 +22,13 @@ def seed_recipes():
       yield_amount=4,
       completion_time=15,
       user_id=3
+    ),
+    demo_recipe_4=Recipe(
+      title="Homemade Hamburger Helper",
+      description="Think of this as the most luxurious Hamburger Helper you’ve ever had. It’s how Mark Rosati, the culinary director of Shake Shack, turns leftover ground beef into a complete weeknight dinner. The entire dish — even the pasta — is made in one pot, and melds the indelible comfort of macaroni and cheese with the complexity of a good Bolognese. This definitely has a kick, so adjust the hot sauce according to taste.",
+      yield_amount=4,
+      completion_time=60,
+      user_id=1
     )
   )
 

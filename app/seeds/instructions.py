@@ -68,6 +68,51 @@ def seed_instructions():
       content="Drizzle open buns with a little Amaro, if using. Top each bottom half with a spoonful of strawberry mash, followed by a single scoop of ice cream, then another spoonful of strawberry mash. Close up sandwiches and serve immediately.",
       recipe_id=3
     ),
+    instruction_14=Instructions(
+      step=1,
+      content="Heat a large (12-inch) sauté pan or Dutch oven over medium-low heat, and add oil and onion; season lightly with salt and pepper. (The hot sauce added in Step 6 will add a lot of flavor, so be careful not to overseason here.) Let cook until the onions turn light beige in color and begin to caramelize, 20 to 25 minutes.",
+      recipe_id=4
+    ),
+    instruction_15=Instructions(
+      step=2,
+      content="Add garlic, and cook until fragrant and starting to brown ever so slightly, about 2 minutes.",
+      recipe_id=4
+    ),
+    instruction_16=Instructions(
+      step=3,
+      content="Increase heat to medium-high and add bacon and ground beef, using the back of a large spoon to break up the meat into smaller pieces. Continue to cook until the liquid has mostly evaporated and the meat starts to sear and develop a crust on the bottom of the pan, 12 to 15 minutes.",
+      recipe_id=4
+    ),
+    instruction_17=Instructions(
+      step=4,
+      content="Remove pan from the heat and carefully drain off most of the fat, leaving a little in the pan to keep the meat moist.",
+      recipe_id=4
+    ),
+    instruction_18=Instructions(
+      step=5,
+      content="Return pan to the medium-high heat and add white wine, allowing it to reduce until the mixture is almost dry, about 10 minutes.",
+      recipe_id=4
+    ),
+    instruction_19=Instructions(
+      step=6,
+      content="Add the chicken stock, heavy cream, hot sauce, paprika and bay leaf to the pan. Mix until combined and bring to a boil over medium-high.",
+      recipe_id=4
+    ),
+    instruction_20=Instructions(
+      step=7,
+      content="Once the mixture is boiling, add the pasta and cook until al dente, stirring often, about 9 minutes.",
+      recipe_id=4
+    ),
+    instruction_21=Instructions(
+      step=8,
+      content="Reduce the heat to low and stir in both types of cheese, stirring until completely melted and sauce is thickened.",
+      recipe_id=4
+    ),
+    instruction_22=Instructions(
+      step=9,
+      content="Remove the pan from heat, stir in chives and season to taste with salt and pepper. Serve immediately.",
+      recipe_id=4
+    ),
   )
 
   for key in seeders:
