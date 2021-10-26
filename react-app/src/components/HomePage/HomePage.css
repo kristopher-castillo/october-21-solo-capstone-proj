@@ -1,7 +1,13 @@
 .home-container {
   background-color: #f2f3ef;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 75px;
+}
+
+.home-container a:visited,a:link {
+  color: black;
 }
 
 .home-header-image-container {
