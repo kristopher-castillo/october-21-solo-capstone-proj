@@ -13,6 +13,10 @@ def seed_images():
     image_3=Image(
       image_url='https://static01.nyt.com/images/2021/06/21/dining/lep-strawberry-ice-cream-sandwiches/merlin_188069937_308af533-e491-4515-a7eb-7a9ea116a031-articleLarge.jpg',
       recipe_id=3
+    ),
+    image_4 = Image(
+        image_url='https://static01.nyt.com/images/2019/12/19/dining/pk-hamburger-helper/merlin_165769671_3a64dfc9-6395-4d07-ae85-691ca4c10c45-articleLarge.jpg',
+        recipe_id=4
     )
   )
 

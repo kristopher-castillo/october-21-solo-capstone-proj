@@ -113,6 +113,86 @@ def seed_ingredients():
         amount_unit=1,
         recipe_id=3
     ),
+    ingredient_23=Ingredient(
+        name="neutral oil",
+        amount_unit=.25,
+        recipe_id=4
+    ),
+    ingredient_24=Ingredient(
+        name="large yellow onion",
+        amount_unit=1,
+        recipe_id=4
+    ),
+    ingredient_25=Ingredient(
+        name="salt",
+        amount_unit=1,
+        recipe_id=4
+    ),
+    ingredient_26=Ingredient(
+        name="garlic cloves, minced",
+        amount_unit=3,
+        recipe_id=4
+    ),
+    ingredient_27=Ingredient(
+        name="strips bacon",
+        amount_unit=5,
+        recipe_id=4
+    ),
+    ingredient_28=Ingredient(
+        name="ground beef",
+        amount_unit=1,
+        recipe_id=4
+    ),
+    ingredient_29=Ingredient(
+        name="dry white wine",
+        amount_unit=1,
+        recipe_id=4
+    ),
+    ingredient_30=Ingredient(
+        name="chicken stock or water",
+        amount_unit=3,
+        recipe_id=4
+    ),
+    ingredient_31=Ingredient(
+        name="heavy cream",
+        amount_unit=.75,
+        recipe_id=4
+    ),
+    ingredient_32=Ingredient(
+        name="hot sauce",
+        amount_unit=.25,
+        recipe_id=4
+    ),
+    ingredient_33=Ingredient(
+        name="hot smoked paprika",
+        amount_unit=2,
+        recipe_id=4
+    ),
+    ingredient_34=Ingredient(
+        name="bay leaf",
+        amount_unit=1,
+        recipe_id=4
+    ),
+    ingredient_35=Ingredient(
+        name="elbow pasta",
+        amount_unit=8,
+        recipe_id=4
+    ),
+    ingredient_36=Ingredient(
+        name="American cheese",
+        amount_unit=5,
+        recipe_id=4
+    ),
+    ingredient_37=Ingredient(
+        name="grated cheddar",
+        amount_unit=1.5,
+        recipe_id=4
+    ),
+    ingredient_38=Ingredient(
+        name="finely chopped chives",
+        amount_unit=.5,
+        recipe_id=4
+    ),
   )
 
   for key in seeders:
