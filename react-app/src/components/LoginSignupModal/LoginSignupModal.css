@@ -62,3 +62,18 @@
   color: red;
   font-size: 1.15rem;
 }
+
+.login-btn {
+  width: 115px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #00CE8E;
+  padding: 10px 30px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: 1.05rem;
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+}

@@ -15,17 +15,21 @@ const NavBar = () => {
 
   if (sessionUser) {
     sessionLinks = (
-      <div className="user-container" id="user-container-loggedin">
-        <NavLink to='/recipes/new' exact={true} activeClassName='active'>
+      <div className="user-container-loggedin">
+        <NavLink
+          className="new-recipe-link"
+          to="/recipes/new"
+          exact={true}
+          activeClassName="active"
+        >
           New Recipe
         </NavLink>
         <LogoutButton />
       </div>
-      
-    )
+    );
   } else {
     sessionLinks = (
-      <div className="user-container" id="user-container-loggedout">
+      <div className="user-container-loggedout">
         <LoginSignupModal restrictedAccess={!sessionUser && restrictedPage} />
       </div>
     );
@@ -34,17 +38,18 @@ const NavBar = () => {
   return (
     <nav className="nav-bar">
       <div className="nav-logo-container">
-        <NavLink to='/' exact={true} activeClassName='logo-link'>
+        <NavLink to="/" exact={true} className="logo-link">
           {/* <button className="nav-logo-button"></button> */}
           <p className="nav-logo-text">|Cooking</p>
         </NavLink>
       </div>
-      <div>
-        <NavLink to='/recipes' exact={true} activeClassName='active'>
-          Recipes
-        </NavLink>
-      </div>
-      <div>
+
+      <div className="user-container">
+        <div>
+          <NavLink to="/recipes" exact={true} className="recipes-link">
+            <button className="recipes-link-btn">Recipes</button>
+          </NavLink>
+        </div>
         {sessionLinks}
       </div>
     </nav>

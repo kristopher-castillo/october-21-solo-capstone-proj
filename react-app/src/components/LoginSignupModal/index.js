@@ -92,7 +92,7 @@ const LoginSignupModal = ({restrictedAccess}) => {
 
   return (
     <>
-      <button className="login-button" onClick={() => setShowModal(true)}>
+      <button className="login-btn" onClick={() => setShowModal(true)}>
         Log in
       </button>
       {showModal && (
