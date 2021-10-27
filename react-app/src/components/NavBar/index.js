@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import LoginSignupModal from '../LoginSignupModal';
 
 import "./NavBar.css"
 
@@ -20,13 +21,7 @@ const NavBar = () => {
   } else {
     sessionLinks = (
       <div className="user-container">
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Login
-        </NavLink>
-
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
+        <LoginSignupModal />
       </div>
     )
   }
@@ -40,13 +35,8 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div>
-        <NavLink to='/users' exact={true} activeClassName='active'>
-          Users
-        </NavLink>
-      </div>
-      <div>
         <NavLink to='/recipes/1' exact={true} activeClassName='active'>
-          Recipe
+          Recipes
         </NavLink>
       </div>
       <div>
