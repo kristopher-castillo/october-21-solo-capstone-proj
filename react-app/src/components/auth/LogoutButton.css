@@ -1,13 +1,20 @@
 .logout-btn {
   width: 125px;
   height: 40px;
-  border: none;
-  color: white;
-  background-color: #00CE8E;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
   padding: 10px 20px;
   margin: 8px 0px;
   text-decoration: none;
   font-size: 1.05rem;
   box-sizing: border-box;  
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.logout-btn:hover {
+  background-color: #00CE8E;
+  color: white;
 }

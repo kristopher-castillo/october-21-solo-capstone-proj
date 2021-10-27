@@ -14,20 +14,26 @@
   align-items: center;
 }
 
+.note-content {
+  padding: 8px 0px;
+}
+
 .new-note-box {
   width: 100%;
 }
 
 .new-note-text {
   width: 100%;
+  font: 13px Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
 }
 
 .notes-break {
   width: 45vw;
 }
 
-.cooking-notes-label {
-  font-weight: bold;
+h3 {
+  color: rgba(0, 206, 142, 1);
 }
 
 .note-submit-btn {
@@ -47,7 +53,7 @@
 }
 
 .note-user {
-  padding: 8px 0px;
+  padding: 4px 0px;
   font-weight: bold;
 }
 
@@ -56,31 +62,39 @@
   display: flex;
 }
 
-.note-btn-container button {
-  width: 88px;
-  height: 30px;
-  border: 1px solid rgba(0, 206, 142, 1);
+.note-btn-container button, .edit-submit-btn {
+  width: 45px;
+  height: 20px;
+  border: none;
   color: rgba(0, 206, 142, 1);
   background-color: white;
   transition-duration: 0.2s;
   cursor: pointer;
-  padding: 5px 6px;
+  padding: 3px 0px;
   text-decoration: none;
+  text-align: left;
   font-size: .9rem;
   box-sizing: border-box;  
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-.note-btn-container button:hover, .note-submit-btn:hover {
-  background-color: #00CE8E;
-  color: white;
+.note-btn-container button:hover, .edit-submit-btn:hover {
+  text-decoration: underline;
 }
 
-.edit-button {
-  margin-right: 10px;
+.note-submit-btn:hover {
+  background-color: #00CE8E;
+  color: white;
 }
 
 .single-note-break {
   width: 45vw;
   border: 1px solid rgba(0, 0, 0, .05);
+}
+
+
+.edit-note-text {
+  width: 100%;
+  font: 13px Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
 }

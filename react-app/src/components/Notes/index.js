@@ -18,6 +18,7 @@ const Notes = () => {
   const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
 
+  const userHasNote = notes?.some(note => note.user_id === sessionUser?.id)
 
   useEffect(() => {
     dispatch(getRecipeNotes(recipeId))
@@ -48,28 +49,34 @@ const Notes = () => {
       <div className="notes-container">
         <div className="notes-spacer"></div>
         <div className="notes-content-container">
-          <div className="new-note-box">
-            <form className="note-form" onSubmit={handleSubmit}>
-              <p className="cooking-notes-label">Cooking Notes</p>
-              <textarea
-                className="new-note-text"
-                rows="4"
-                onChange={(e) => {
-                  setContent(e.target.value);
-                }}
-                value={content}
-                required
-              ></textarea>
-              <div className="note-submit-btn-container">
-                <button className="note-submit-btn">Post Note</button>
-              </div>
-            </form>
-          </div>
+          <h3 className="cooking-notes-label">Cooking Notes</h3>
+          {!userHasNote && (
+            <div className="new-note-box">
+              <form className="note-form" onSubmit={handleSubmit}>
+                
+                <textarea
+                  className="new-note-text"
+                  rows="4"
+                  onChange={(e) => {
+                    setContent(e.target.value);
+                  }}
+                  value={content}
+                  required
+                ></textarea>
+                <div className="note-submit-btn-container">
+                  <button className="note-submit-btn">Post Note</button>
+                </div>
+              </form>
+            </div>
+          )}
           <hr className="notes-break"></hr>
           <div className="notes-list-container">
             {notes?.map((note) => (
               <div className="notes-item" key={note?.id}>
                 <div className="note-top-container">
+                  <div className="note-user">
+                    {users?.find((user) => note?.user_id === user.id).username}
+                  </div>
                   <div className="note-content" hidden={hideContent}>
                     {note?.content}
                   </div>
@@ -81,7 +88,7 @@ const Notes = () => {
                       >
                         <textarea
                           className="edit-note-text"
-                          rows="5"
+                          rows="2"
                           onChange={(e) => {
                             setEditContent(e.target.value);
                             setEditNoteId(note?.id);
@@ -91,20 +98,19 @@ const Notes = () => {
                           required
                         ></textarea>
                         <button
+                          className="edit-submit-btn"
                           type="submit"
                           onClick={() => {
                             setHideContent(false);
                             setHideEdit(true);
                           }}
                         >
-                          Submit Edit
+                          Submit
                         </button>
                       </form>
                     </div>
                   ) : null}
-                  <div className="note-user">
-                    {users?.find((user) => note?.user_id === user.id).username}
-                  </div>
+                  
                 </div>
                 <div className="note-btn-container">
                   <NotesButtons
@@ -113,6 +119,7 @@ const Notes = () => {
                     recipeId={recipeId}
                     hideContent={setHideContent}
                     hideEdit={setHideEdit}
+                    hideButtons={hideContent}
                   />
                 </div>
                 <hr className="single-note-break"></hr>
