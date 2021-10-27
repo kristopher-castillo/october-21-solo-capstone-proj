@@ -37,6 +37,8 @@ const NewRecipePage = () => {
     history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
   }
 
+  if (!sessionUser) history.push('/')
+
   return (
     <>
       <div className="new-recipe-container">

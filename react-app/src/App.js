@@ -17,10 +17,13 @@ import EditRecipeIngredientsPage from './components/EditRecipeIngredientsPage';
 import EditRecipeInstructionsPage from './components/EditRecipeInstructionsPage';
 
 import { authenticate } from './store/session';
+import { getUsers } from './store/user';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+
+  useEffect(() => dispatch(getUsers()), [dispatch])
 
   useEffect(() => {
     (async() => {

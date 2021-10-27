@@ -18,6 +18,7 @@ const Notes = () => {
   const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getRecipeNotes(recipeId))
   }, [dispatch, recipeId])
@@ -69,7 +70,7 @@ const Notes = () => {
                 <div className="note-content" hidden={hideContent}>
                   {note?.content}
                 </div>
-                {note?.user_id === sessionUser.id ? (
+                {note?.user_id === sessionUser?.id ? (
                   <div className="edit-note-content" hidden={hideEdit}>
                     <form className="edit-note-form" onSubmit={handleNoteEdit}>
                       <textarea
@@ -101,7 +102,7 @@ const Notes = () => {
               </div>
               <div className="note-btn-container">
                 <NotesButtons
-                  isNotesUser={note?.user_id === sessionUser.id}
+                  isNotesUser={note?.user_id === sessionUser?.id}
                   deleteId={note?.id}
                   recipeId={recipeId}
                   hideContent={setHideContent}
