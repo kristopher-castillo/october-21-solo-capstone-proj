@@ -42,7 +42,7 @@ const NewRecipePage = () => {
   return (
     <>
       <div className="new-recipe-container">
-        <h1>New Recipe Page</h1>
+        <h1>Add Your Own Recipe</h1>
         <form onSubmit={handleSubmit} id="new-recipe-form">
           <div className="new-recipe-title-container">
             <label>Recipe Title:</label>
@@ -73,7 +73,7 @@ const NewRecipePage = () => {
                 }}
                 value={yield_amount}
               ></input>
-              <label>Time to Completion: </label>
+              <label>Time to Completion (in minutes): </label>
               <input
                 className="new-recipe-time"
                 type="number"
@@ -88,6 +88,7 @@ const NewRecipePage = () => {
               <textarea
                 className="new-recipe-description"
                 placeholder="Type your recipe's description here."
+                rows="6"
                 onChange={(e) => {
                   setDescription(e.target.value);
                 }}
@@ -96,8 +97,9 @@ const NewRecipePage = () => {
               ></textarea>
             </div>
             <div className="new-recipe-image-container">
-              <p className="card-text">Choose an image for your recipe</p>
+              <label>Choose an image for your recipe:</label>
               <input
+                className="image-upload"
                 type="file"
                 name="file"
                 onChange={(e) => setImage(e.target.files[0])}
@@ -105,13 +107,13 @@ const NewRecipePage = () => {
               ></input>
             </div>
           </div>
-          <div className="new-recipe-buttons-container">
-            <button className="new-recipe-submit-btn">Next</button>
+          <div className="new-recipe-buttons-container">  
             <Link to="/">
               <button type="button" className="new-recipe-cancel-btn">
                 Cancel
               </button>
             </Link>
+            <button className="new-recipe-next-btn">Next</button>
           </div>
         </form>
       </div>
