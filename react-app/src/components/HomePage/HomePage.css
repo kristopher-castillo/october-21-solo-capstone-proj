@@ -88,3 +88,30 @@
   border: 2px solid black;
   width: 50%;
 }
+
+.recommended-recipes-container {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recommended-recipe-card {
+  width: 315px;
+  height: 315px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.recommended-recipe-card-img {
+  max-width: 300px;
+  max-height: 300px;
+  padding-top: 15px;
+}
+
+.recommended-recipe-card-title {
+  padding-top: 15px;
+  text-align: center;
+}

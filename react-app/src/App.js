@@ -18,6 +18,7 @@ import EditRecipeInstructionsPage from './components/EditRecipeInstructionsPage'
 
 import { authenticate } from './store/session';
 import { getUsers } from './store/user';
+import RecipesPage from './components/RecipesPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,43 +41,45 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/' exact={true} >
+        <Route path="/" exact={true}>
           <HomePage />
         </Route>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/recipes/new' exact={true}>
+        <Route path="/recipes" exact={true}>
+          <RecipesPage />
+        </Route>
+        <Route path="/recipes/new" exact={true}>
           <NewRecipePage />
         </Route>
-        <Route path='/recipes/new/:recipeId/ingredients' exact={true}>
+        <Route path="/recipes/new/:recipeId/ingredients" exact={true}>
           <NewRecipeIngredientsPage />
         </Route>
-        <Route path='/recipes/new/:recipeId/instructions' exact={true}>
+        <Route path="/recipes/new/:recipeId/instructions" exact={true}>
           <NewRecipeInstructionsPage />
         </Route>
-        <Route path='/recipes/:recipeId' exact={true}>
+        <Route path="/recipes/:recipeId" exact={true}>
           <RecipePage />
         </Route>
-        <Route path='/recipes/edit/:recipeId' exact={true}>
+        <Route path="/recipes/edit/:recipeId" exact={true}>
           <EditRecipePage />
         </Route>
-        <Route path='/recipes/edit/:recipeId/ingredients' exact={true}>
+        <Route path="/recipes/edit/:recipeId/ingredients" exact={true}>
           <EditRecipeIngredientsPage />
         </Route>
-        <Route path='/recipes/edit/:recipeId/instructions' exact={true}>
+        <Route path="/recipes/edit/:recipeId/instructions" exact={true}>
           <EditRecipeInstructionsPage />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-
       </Switch>
     </BrowserRouter>
   );
