@@ -9,3 +9,22 @@ padding-top: 75px;
 .new-ingredients-container {
   width: 70vw;
 }
+
+.new-ingredients-body-container {
+  width: 70vw;
+  display: flex;
+}
+
+.new-ingredients-list-container {
+  width: 30vw;
+}
+
+.new-ingredients-form-container {
+  width: 40vw;
+}
+
+.new-ingredients-buttons-container {
+  display: flex;
+  align-items: space-between;
+  width: 60vw;
+}
