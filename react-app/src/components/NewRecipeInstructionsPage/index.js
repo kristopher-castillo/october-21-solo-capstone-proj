@@ -48,6 +48,8 @@ const NewRecipeInstructionsPage = () => {
     return null;
   };
 
+  if (!sessionUser) history.push("/");
+
   return (
     <>
       <div className="new-instructions-page-container">

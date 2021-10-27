@@ -54,6 +54,8 @@ const NewRecipeIngredientsPage = () => {
     return null;
   }
 
+  if (!sessionUser) history.push("/");
+
   return (
     <>
       <div className="new-ingredients-page-container">

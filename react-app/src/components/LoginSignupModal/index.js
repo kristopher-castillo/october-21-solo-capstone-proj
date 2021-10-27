@@ -75,7 +75,12 @@ const LoginSignupModal = ({restrictedAccess}) => {
 
   const cancelButton = (
     <Link to="/">
-      <button className="modal-cancel-btn" onClick={() => setShowModal(false)}>
+      <button
+        className="modal-cancel-btn"
+        onClick={() => {
+          setShowModal(false)
+          onModalClose()
+        }}>
         Cancel
       </button>
     </Link>

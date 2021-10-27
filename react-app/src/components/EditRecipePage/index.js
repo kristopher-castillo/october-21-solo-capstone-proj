@@ -62,6 +62,8 @@ const EditRecipePage = () => {
     history.push(`/recipes/edit/${createdRecipe.id}/ingredients`);
   };
 
+  if (!sessionUser) history.push("/");
+
   return (
     <>
       <div className="new-recipe-container">
