@@ -33,15 +33,22 @@
 .note-submit-btn {
   width: 100px;
   height: 30px;
-  border: none;
-  color: white;
-  background-color: #00CE8E;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
   padding: 5px 10px;
   margin: 8px 0px;
   text-decoration: none;
   font-size: 1rem;
   box-sizing: border-box;  
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.note-user {
+  padding: 8px 0px;
+  font-weight: bold;
 }
 
 .note-btn-container {
@@ -52,13 +59,28 @@
 .note-btn-container button {
   width: 88px;
   height: 30px;
-  border: none;
-  color: white;
-  background-color: #00CE8E;
-  padding: 5px 7px;
-  margin: 8px 0px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 6px;
   text-decoration: none;
   font-size: .9rem;
   box-sizing: border-box;  
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.note-btn-container button:hover, .note-submit-btn:hover {
+  background-color: #00CE8E;
+  color: white;
+}
+
+.edit-button {
+  margin-right: 10px;
+}
+
+.single-note-break {
+  width: 45vw;
+  border: 1px solid rgba(0, 0, 0, .05);
 }

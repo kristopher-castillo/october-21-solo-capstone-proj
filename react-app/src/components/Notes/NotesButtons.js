@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteNote } from "../../store/note";
 
+import "./Notes.css"
 
 const NotesButtons = ({isNotesUser, deleteId, recipeId, hideContent, hideEdit}) => {
   const sessionUser = useSelector((state) => state.session.user);

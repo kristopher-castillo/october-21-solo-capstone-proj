@@ -115,6 +115,7 @@ const Notes = () => {
                     hideEdit={setHideEdit}
                   />
                 </div>
+                <hr className="single-note-break"></hr>
               </div>
             ))}
           </div>
