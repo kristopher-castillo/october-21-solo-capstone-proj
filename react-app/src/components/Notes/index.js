@@ -46,71 +46,78 @@ const Notes = () => {
   return (
     <>
       <div className="notes-container">
-        <h4>Notes Section</h4>
-        <div className="new-note-box">
-          <form className="note-form" onSubmit={handleSubmit}>
-            <textarea
-              className="new-note-text"
-              rows="5"
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
-              value={content}
-              required
-            ></textarea>
-            <div className="note-submit-btn-container">
-              <button className="note-submit-btn">Post Note</button>
-            </div>
-          </form>
-        </div>
-        <div className="notes-list-container">
-          {notes?.map((note) => (
-            <div className="notes-item" key={note?.id}>
-              <div className="note-top-container">
-                <div className="note-content" hidden={hideContent}>
-                  {note?.content}
-                </div>
-                {note?.user_id === sessionUser?.id ? (
-                  <div className="edit-note-content" hidden={hideEdit}>
-                    <form className="edit-note-form" onSubmit={handleNoteEdit}>
-                      <textarea
-                        className="edit-note-text"
-                        rows="5"
-                        onChange={(e) => {
-                          setEditContent(e.target.value);
-                          setEditNoteId(note?.id)
-                        }}
-                        placeholder={note?.content}
-                        value={editContent}
-                        required
-                      ></textarea>
-                      <button
-                        type="submit"
-                        onClick={() => {
-                          setHideContent(false);
-                          setHideEdit(true);
-                        }}
-                      >
-                        Submit Edit
-                      </button>
-                    </form>
+        <div className="notes-spacer"></div>
+        <div className="notes-content-container">
+          <div className="new-note-box">
+            <form className="note-form" onSubmit={handleSubmit}>
+              <p className="cooking-notes-label">Cooking Notes</p>
+              <textarea
+                className="new-note-text"
+                rows="4"
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
+                value={content}
+                required
+              ></textarea>
+              <div className="note-submit-btn-container">
+                <button className="note-submit-btn">Post Note</button>
+              </div>
+            </form>
+          </div>
+          <hr className="notes-break"></hr>
+          <div className="notes-list-container">
+            {notes?.map((note) => (
+              <div className="notes-item" key={note?.id}>
+                <div className="note-top-container">
+                  <div className="note-content" hidden={hideContent}>
+                    {note?.content}
                   </div>
-                ) : null}
-                <div className="note-user">
-                  {users?.find((user) => note?.user_id === user.id).username}
+                  {note?.user_id === sessionUser?.id ? (
+                    <div className="edit-note-content" hidden={hideEdit}>
+                      <form
+                        className="edit-note-form"
+                        onSubmit={handleNoteEdit}
+                      >
+                        <textarea
+                          className="edit-note-text"
+                          rows="5"
+                          onChange={(e) => {
+                            setEditContent(e.target.value);
+                            setEditNoteId(note?.id);
+                          }}
+                          placeholder={note?.content}
+                          value={editContent}
+                          required
+                        ></textarea>
+                        <button
+                          type="submit"
+                          onClick={() => {
+                            setHideContent(false);
+                            setHideEdit(true);
+                          }}
+                        >
+                          Submit Edit
+                        </button>
+                      </form>
+                    </div>
+                  ) : null}
+                  <div className="note-user">
+                    {users?.find((user) => note?.user_id === user.id).username}
+                  </div>
+                </div>
+                <div className="note-btn-container">
+                  <NotesButtons
+                    isNotesUser={note?.user_id === sessionUser?.id}
+                    deleteId={note?.id}
+                    recipeId={recipeId}
+                    hideContent={setHideContent}
+                    hideEdit={setHideEdit}
+                  />
                 </div>
               </div>
-              <div className="note-btn-container">
-                <NotesButtons
-                  isNotesUser={note?.user_id === sessionUser?.id}
-                  deleteId={note?.id}
-                  recipeId={recipeId}
-                  hideContent={setHideContent}
-                  hideEdit={setHideEdit}
-                />
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </>

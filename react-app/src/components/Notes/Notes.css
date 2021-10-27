@@ -1,0 +1,64 @@
+.notes-container {
+  width: 70vw;
+  display: flex;
+}
+
+.notes-spacer {
+  width: 23vw;
+}
+
+.notes-content-container {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-note-box {
+  width: 100%;
+}
+
+.new-note-text {
+  width: 100%;
+}
+
+.notes-break {
+  width: 45vw;
+}
+
+.cooking-notes-label {
+  font-weight: bold;
+}
+
+.note-submit-btn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  color: white;
+  background-color: #00CE8E;
+  padding: 5px 10px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: 1rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.note-btn-container {
+  width: 45vw;
+  display: flex;
+}
+
+.note-btn-container button {
+  width: 88px;
+  height: 30px;
+  border: none;
+  color: white;
+  background-color: #00CE8E;
+  padding: 5px 7px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: .9rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
