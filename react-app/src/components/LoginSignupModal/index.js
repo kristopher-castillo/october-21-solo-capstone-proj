@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import { login, signUp } from "../../store/session";
 
 
 import "./LoginSignupModal.css"
 
-const LoginSignupModal = () => {
+const LoginSignupModal = ({restrictedAccess}) => {
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(restrictedAccess);
   const [hideModal1, setHideModal1] = useState(false);
   const [hideModal2, setHideModal2] = useState(true);
   const [hideModal3, setHideModal3] = useState(true);
@@ -16,23 +17,28 @@ const LoginSignupModal = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const sessionUser = useSelector((state) => state.session.user);
   const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
-  
+  const location = useLocation().pathname;
+  const restrictedPage = /\d/.test(location);
+
+  useEffect(() => {
+    setShowModal(restrictedAccess)
+  }, [restrictedAccess])
 
   const handleEmailSubmit = (e) => {
-    e.preventDefault()
-    const userEmails = users?.map((user => user.email))
+    e.preventDefault();
+    const userEmails = users?.map((user) => user.email);
 
     if (userEmails.includes(email)) {
-      setHideModal1(true)
-      setHideModal2(false)
-    }
-    else {
+      setHideModal1(true);
+      setHideModal2(false);
+    } else {
       setHideModal1(true);
       setHideModal3(false);
     }
-  }
+  };
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -40,26 +46,45 @@ const LoginSignupModal = () => {
     if (data) {
       setErrors(data);
     }
-  };  
+  };
   const onSignUp = async (e) => {
     e.preventDefault();
-    
+
     const data = await dispatch(signUp(username, email, newPassword));
     if (data) {
       setErrors(data);
     }
   };
 
-  const onModalClose = () => {
-    setShowModal(false);
-    setHideModal1(false);
-    setHideModal2(true);
-    setHideModal3(true);
-    setEmail("")
-    setUsername("")
-    setPassword("")
-    setNewPassword("")
+  const demoLogin = () => {
+    dispatch(login("demo@aa.io", "password"))
   }
+
+  const onModalClose = () => {
+    if ((!sessionUser && !restrictedPage) || (sessionUser && restrictedPage)) {
+      setShowModal(false);
+      setHideModal1(false);
+      setHideModal2(true);
+      setHideModal3(true);
+      setEmail("");
+      setUsername("");
+      setPassword("");
+      setNewPassword("");
+    }
+  };
+
+  const cancelButton = (
+    <Link to="/">
+      <button className="modal-cancel-btn" onClick={() => setShowModal(false)}>
+        Cancel
+      </button>
+    </Link>
+  );
+
+  const demoButton = (
+    <button className="demo-btn" onClick={demoLogin}>Demo User</button>
+  ) 
+
   return (
     <>
       <button className="login-button" onClick={() => setShowModal(true)}>
@@ -98,6 +123,8 @@ const LoginSignupModal = () => {
                   ></input>
                   <div className="modal-continue-btn-container">
                     <button className="modal-continue-btn">Continue</button>
+                    {cancelButton}
+                    {demoButton}
                   </div>
                 </form>
               </div>
@@ -118,6 +145,7 @@ const LoginSignupModal = () => {
                   ></input>
                   <div className="modal-submit-btn-container">
                     <button className="modal-submit-btn">Login</button>
+                    {cancelButton}
                   </div>
                 </form>
               </div>
@@ -128,7 +156,9 @@ const LoginSignupModal = () => {
                       <div key={ind}>{error.slice(error.indexOf(":") + 2)}</div>
                     ))}
                   </div>
-                  <p className="modal-text">Enter a username and password to sign up</p>
+                  <p className="modal-text">
+                    Enter a username and password to sign up
+                  </p>
                   <input
                     className="modal-username-input"
                     type="text"
@@ -145,6 +175,7 @@ const LoginSignupModal = () => {
                   ></input>
                   <div className="modal-submit-btn-container">
                     <button className="modal-submit-btn">Sign Up</button>
+                    {cancelButton}
                   </div>
                 </form>
               </div>
@@ -154,8 +185,6 @@ const LoginSignupModal = () => {
       )}
     </>
   );
-
-
 }
 
 export default LoginSignupModal;

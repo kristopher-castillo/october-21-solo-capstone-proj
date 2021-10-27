@@ -18,6 +18,7 @@ const Notes = () => {
   const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getRecipeNotes(recipeId))
   }, [dispatch, recipeId])
