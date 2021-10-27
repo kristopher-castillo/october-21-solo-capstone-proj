@@ -27,6 +27,16 @@ padding: 75px 0px;
   padding-right: 20px;
 }
 
+.recipe-yield, .recipe-time {
+  font-weight: bold;
+}
+
+.recipe-yield span, .recipe-time span {
+  font-weight: normal;
+}
+
+
+
 .recipe-image-container {
   padding-left: 20px;
 }
@@ -52,4 +62,28 @@ hr {
 
 .recipe-steps-container {
   width: 50vw;
+}
+
+.edit-button, .delete-button {
+  width: 125px;
+  height: 30px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.edit-button:hover, .delete-button:hover {
+  background-color: #00CE8E;
+  color: white;
+}
+
+.edit-button {
+  margin-right: 10px;
 }
