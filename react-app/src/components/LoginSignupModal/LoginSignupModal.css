@@ -13,9 +13,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 375px;
 }
 
-.modal-login-form-1 {
+
+.modal-login-form-1, .modal-login-form-2, .modal-signup-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,20 +27,22 @@
 .modal-text {
   text-align: center;
   font-size: 1.5rem;
+  padding: 0px 15px;
 }
 
-.modal-email-input {
+.modal-email-input, .modal-password-input, .modal-username-input {
   width: 300px;
   height: 40px;
   box-sizing: border-box;
   text-align: center;
+  margin: 10px 0px;
 }
 
-.modal-continue-btn-container {
+/* .modal-continue-btn-container {
   padding-top: 10px;
-}
+} */
 
-.modal-continue-btn {
+.modal-continue-btn, .modal-submit-btn {
   width: 300px;
   height: 40px;
   border: none;
@@ -50,4 +54,7 @@
   box-sizing: border-box;
 }
 
-
+.errors {
+  color: red;
+  font-size: 1.15rem;
+}

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from "../../context/Modal";
-import { login } from "../../store/session";
+import { login, signUp } from "../../store/session";
 
 
 import "./LoginSignupModal.css"
 
 const LoginSignupModal = () => {
+  const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [hideModal1, setHideModal1] = useState(false);
   const [hideModal2, setHideModal2] = useState(true);
   const [hideModal3, setHideModal3] = useState(true);
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const users = useSelector((state) => state.users?.users?.users);
   const dispatch = useDispatch();
-
+  
 
   const handleEmailSubmit = (e) => {
     e.preventDefault()
@@ -30,13 +34,39 @@ const LoginSignupModal = () => {
     }
   }
 
+  const onLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+  };  
+  const onSignUp = async (e) => {
+    e.preventDefault();
+    
+    const data = await dispatch(signUp(username, email, newPassword));
+    if (data) {
+      setErrors(data);
+    }
+  };
+
+  const onModalClose = () => {
+    setShowModal(false);
+    setHideModal1(false);
+    setHideModal2(true);
+    setHideModal3(true);
+    setEmail("")
+    setUsername("")
+    setPassword("")
+    setNewPassword("")
+  }
   return (
     <>
       <button className="login-button" onClick={() => setShowModal(true)}>
         Log in
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={onModalClose}>
           <div className="modal-container">
             <div className="modal-image-container">
               <img
@@ -51,6 +81,11 @@ const LoginSignupModal = () => {
                   className="modal-login-form-1"
                   onSubmit={handleEmailSubmit}
                 >
+                  <div className="errors">
+                    {errors.map((error, ind) => (
+                      <div key={ind}>{error.slice(error.indexOf(":") + 2)}</div>
+                    ))}
+                  </div>
                   <p className="modal-text">
                     Enter your email address to log in or create an account
                   </p>
@@ -67,11 +102,19 @@ const LoginSignupModal = () => {
                 </form>
               </div>
               <div className="modal-login-2" hidden={hideModal2}>
-                <form className="modal-login-form-2">
+                <form className="modal-login-form-2" onSubmit={onLogin}>
+                  <div className="errors">
+                    {errors.map((error, ind) => (
+                      <div key={ind}>{error.slice(error.indexOf(":") + 2)}</div>
+                    ))}
+                  </div>
+                  <p className="modal-text">Enter your password to log in</p>
                   <input
                     className="modal-password-input"
-                    type="text"
+                    type="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   ></input>
                   <div className="modal-submit-btn-container">
                     <button className="modal-submit-btn">Login</button>
@@ -79,11 +122,26 @@ const LoginSignupModal = () => {
                 </form>
               </div>
               <div className="modal-signup" hidden={hideModal3}>
-                <form className="modal-signup-form">
+                <form className="modal-signup-form" onSubmit={onSignUp}>
+                  <div className="errors">
+                    {errors.map((error, ind) => (
+                      <div key={ind}>{error.slice(error.indexOf(":") + 2)}</div>
+                    ))}
+                  </div>
+                  <p className="modal-text">Enter a username and password to sign up</p>
+                  <input
+                    className="modal-username-input"
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  ></input>
                   <input
                     className="modal-password-input"
-                    type="text"
+                    type="password"
                     placeholder="Password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
                   ></input>
                   <div className="modal-submit-btn-container">
                     <button className="modal-submit-btn">Sign Up</button>
