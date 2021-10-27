@@ -15,7 +15,7 @@ nav {
 }
 
 
-nav a:visited,a:link {
+.logo-link, .recipes-link {
   color: black;
   text-decoration: none;
 }
@@ -48,4 +48,33 @@ nav a:visited,a:link {
   font-size: 2rem;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 450px;
+}
+
+.user-container-loggedin {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.new-recipe-link, .recipes-link-btn {
+  width: 125px;
+  height: 40px;
+  border: none;
+  color: white;
+  background-color: #00CE8E;
+  padding: 10px 20px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: 1.05rem;
+  box-sizing: border-box; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
 }
