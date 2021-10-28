@@ -133,7 +133,7 @@ const NewRecipeIngredientsPage = () => {
               <input
                 className="new-ingredient-name"
                 type="text"
-                pattern="^[a-zA-Z_.,!']+$"
+                pattern="^[a-zA-Z_.,!' ]+$"
                 title="Ingredient names must only contain letters"
                 name="ingredient-name"
                 placeholder="Enter the name an ingredient here"
