@@ -31,7 +31,7 @@ const LoginSignupModal = ({restrictedAccess}) => {
     e.preventDefault();
     const userEmails = users?.map((user) => user.email);
 
-    if (userEmails.includes(email)) {
+    if (userEmails?.includes(email)) {
       setHideModal1(true);
       setHideModal2(false);
     } else {

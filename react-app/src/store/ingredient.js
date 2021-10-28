@@ -56,10 +56,11 @@ export const updateIngredient = (ingredientData, ingredientId) => async (dispatc
   }
 };
 
-export const deleteIngredient = (ingredientId) => async (dispatch) => {
+export const deleteIngredient = (ingredientId, recipeId) => async (dispatch) => {
   const response = await fetch(`/api/ingredients/${ingredientId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
+    body: recipeId
   });
 
   if (response.ok) {

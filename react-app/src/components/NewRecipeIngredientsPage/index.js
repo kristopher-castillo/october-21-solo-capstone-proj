@@ -10,6 +10,7 @@ import "./NewRecipeIngredientsPage.css";
 const NewRecipeIngredientsPage = () => {
   const [name, setName] = useState("");
   const [amount_unit, setAmountUnit] = useState(1)
+  const [ingToDelete, setIngToDelete] = useState("")
   const recipe = useSelector((state) => state.recipes?.recipes);
   const images = useSelector((state) => state.images?.images?.all_images);
   // const users = useSelector((state) => state.users?.users?.users);
@@ -45,6 +46,13 @@ const NewRecipeIngredientsPage = () => {
 
     dispatch(createIngredient(newIngredient));
   };
+
+  const handleDelete = (e, ingredientId) => {
+    e.preventDefault();
+
+    dispatch(deleteIngredient(ingredientId, recipeId))
+
+  }
   
   const recipeHasIngredients = ingredients?.some(
     (ingredient) => ingredient.recipe_id === +recipeId
@@ -90,17 +98,8 @@ const NewRecipeIngredientsPage = () => {
           </div>
         </div>
         <hr></hr>
-        <h3 className="new-ingredients-title">Ingredients</h3>
+        <p className="new-ingredients-title">Ingredients</p>
         <div className="new-ingredients-body-container">
-          <div className="new-ingredients-list-container">
-            <div className="new-recipe-ingredients-list">
-            {ingredients?.map((ingredient) => (
-              <p className="ingredient-item" key={ingredient.id}>
-                {ingredient.amount_unit} {ingredient.name}
-              </p>
-            ))}
-            </div>
-          </div>
           <div className="new-ingredients-form-container">
             <form onSubmit={handleSubmit}>
               <label>Amount: </label>
@@ -120,6 +119,7 @@ const NewRecipeIngredientsPage = () => {
                 className="new-ingredient-name"
                 type="text"
                 name="ingredient-name"
+                placeholder="Enter the name an ingredient here"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -130,6 +130,21 @@ const NewRecipeIngredientsPage = () => {
                   Add Ingredient
                 </button>
             </form>
+          </div>
+          <div className="new-ingredients-list-container">
+            <div className="new-recipe-ingredients-list">
+            {ingredients?.map((ingredient) => (
+              <p className="ingredient-item" key={ingredient.id}>
+                {ingredient.amount_unit} {ingredient.name}
+                <span
+                  className='ingredient-item-remove'
+                  onClick={(e) => {
+                    handleDelete(e, ingredient.id)
+                  }}
+                >X</span>
+              </p>
+            ))}
+            </div>
           </div>
         </div>
         <div className="new-ingredients-buttons-container">

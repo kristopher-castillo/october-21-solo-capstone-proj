@@ -3,11 +3,17 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 100%;
-padding-top: 75px;
+padding: 75px 0px;
 }
 
 .new-ingredients-container {
   width: 70vw;
+}
+
+.new-ingredients-title {
+  font-size: 1.5rem;
+  color: rgba(0, 206, 142, 1);
+  font-weight:bold;
 }
 
 .new-ingredients-body-container {
@@ -16,15 +22,105 @@ padding-top: 75px;
 }
 
 .new-ingredients-list-container {
+  min-height: 30vh;
   width: 30vw;
 }
 
-.new-ingredients-form-container {
+.new-ingredients-form-container form {
   width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-ingredient-amount {
+  width: 40px;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.new-ingredient-name {
+  width: 30vw;
+  height: 25px;
+  margin-bottom: 20px;
+}
+
+.new-ingredients-submit-btn {
+  width: 140px;
+  height: 35px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.new-ingredients-submit-btn:hover {
+  background-color: #00CE8E;
+  color: white;
+}
+
+.new-ingredients-form-container label {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 10px 0px;
+  color: rgba(0, 206, 142, 1);
+}
+
+.ingredient-item {
+  margin: 6px 0px;
+}
+
+.ingredient-item-remove {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 1px 5px;
+  margin: 8px 10px;
+  text-decoration: none;
+  font-size: .8rem;
+}
+
+.ingredient-item-remove:hover {
+  background-color: #00CE8E;
+  color: white;
 }
 
 .new-ingredients-buttons-container {
   display: flex;
-  align-items: space-between;
+  align-items: center;
+  justify-content: center;
   width: 60vw;
+  padding-top: 40px;
+}
+
+.new-ingredients-buttons-container button {
+  margin: 0px 15px;
+  width: 125px;
+  height: 40px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.new-ingredients-buttons-container button:hover {
+  background-color: #00CE8E;
+  color: white;
 }
