@@ -10,7 +10,6 @@ import "./NewRecipeIngredientsPage.css";
 const NewRecipeIngredientsPage = () => {
   const [name, setName] = useState("");
   const [amount_unit, setAmountUnit] = useState(1)
-  const [ingToDelete, setIngToDelete] = useState("")
   const recipe = useSelector((state) => state.recipes?.recipes);
   const images = useSelector((state) => state.images?.images?.all_images);
   // const users = useSelector((state) => state.users?.users?.users);
@@ -45,15 +44,29 @@ const NewRecipeIngredientsPage = () => {
     };
 
     dispatch(createIngredient(newIngredient));
+    setName("")
+    setAmountUnit(1)
   };
 
-  const handleDelete = (e, ingredientId) => {
+  const handleIngredientDelete = (e, ingredientId) => {
     e.preventDefault();
 
     dispatch(deleteIngredient(ingredientId, recipeId))
-
   }
   
+  const handleRecipeDelete = (e) => {
+    const result = window.confirm("Cancelling will erase your recipe. Click OK to confirm.")
+
+    if (result) {
+      dispatch(deleteRecipe(recipeId))
+    }
+    else if (!result) {
+      e.preventDefault()
+      // history.push(`/recipes/new/${recipeId}/ingredients`)
+    }
+    
+  }
+
   const recipeHasIngredients = ingredients?.some(
     (ingredient) => ingredient.recipe_id === +recipeId
   );
@@ -74,7 +87,7 @@ const NewRecipeIngredientsPage = () => {
   return (
     <>
       <div className="new-ingredients-page-container">
-        <h1>Add Ingredients to Your Recipe</h1>
+        <h1 className="new-ingredients-page-title">Add Ingredients to Your Recipe</h1>
         <div className="recipe-title-container">
           <h1 className="recipe-title">{recipe?.title}</h1>
         </div>
@@ -106,7 +119,8 @@ const NewRecipeIngredientsPage = () => {
               <input
                 className="new-ingredient-amount"
                 type="number"
-                min="1"
+                step=".5"
+                min=".5"
                 max="100"
                 name="ingredient-amount"
                 onChange={(e) => {
@@ -118,6 +132,8 @@ const NewRecipeIngredientsPage = () => {
               <input
                 className="new-ingredient-name"
                 type="text"
+                pattern="^[a-zA-Z_.,!']+$"
+                title="Ingredient names must only contain letters"
                 name="ingredient-name"
                 placeholder="Enter the name an ingredient here"
                 onChange={(e) => {
@@ -127,37 +143,43 @@ const NewRecipeIngredientsPage = () => {
                 required
               ></input>
               <button className="new-ingredients-submit-btn">
-                  Add Ingredient
-                </button>
+                Add Ingredient
+              </button>
             </form>
           </div>
           <div className="new-ingredients-list-container">
             <div className="new-recipe-ingredients-list">
-            {ingredients?.map((ingredient) => (
-              <p className="ingredient-item" key={ingredient.id}>
-                {ingredient.amount_unit} {ingredient.name}
-                <span
-                  className='ingredient-item-remove'
-                  onClick={(e) => {
-                    handleDelete(e, ingredient.id)
-                  }}
-                >X</span>
-              </p>
-            ))}
+              {ingredients?.map((ingredient) => (
+                <p className="ingredient-item" key={ingredient.id}>
+                  {ingredient.amount_unit} {ingredient.name}
+                  <span
+                    className="ingredient-item-remove"
+                    onClick={(e) => {
+                      handleIngredientDelete(e, ingredient.id);
+                    }}
+                  >
+                    X
+                  </span>
+                </p>
+              ))}
             </div>
           </div>
         </div>
         <div className="new-ingredients-buttons-container">
-          <Link to={`/recipes/new/${recipeId}`}>
+          {/* <Link to={`/recipes/edit/${recipeId}`}>
             <button type="button">Go Back</button>
-          </Link>
+          </Link> */}
           <Link to="/">
-            <button className="new-ingredients-cancel-btn" type="button">
+            <button
+              className="new-ingredients-cancel-btn"
+              type="button"
+              onClick={handleRecipeDelete}
+            >
               Cancel
             </button>
           </Link>
           <NextButton />
-          </div>
+        </div>
       </div>
     </>
   );

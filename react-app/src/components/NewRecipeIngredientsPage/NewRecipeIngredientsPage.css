@@ -6,13 +6,17 @@ width: 100%;
 padding: 75px 0px;
 }
 
+.new-ingredients-page-title {
+  color: rgba(0, 206, 142, 1);
+}
+
 .new-ingredients-container {
   width: 70vw;
 }
 
 .new-ingredients-title {
   font-size: 1.5rem;
-  color: rgba(0, 206, 142, 1);
+  
   font-weight:bold;
 }
 
@@ -34,7 +38,7 @@ padding: 75px 0px;
 }
 
 .new-ingredient-amount {
-  width: 40px;
+  width: 45px;
   font-size: 1.25rem;
   margin-bottom: 20px;
 }
