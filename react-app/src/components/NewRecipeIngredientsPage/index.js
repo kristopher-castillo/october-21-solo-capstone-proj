@@ -12,7 +12,6 @@ const NewRecipeIngredientsPage = () => {
   const [amount_unit, setAmountUnit] = useState(1)
   const recipe = useSelector((state) => state.recipes?.recipes);
   const images = useSelector((state) => state.images?.images?.all_images);
-  // const users = useSelector((state) => state.users?.users?.users);
   const sessionUser = useSelector((state) => state.session.user);
   const ingredients = useSelector((state) => state.ingredients?.ingredients?.recipe_ingredients);
   const { recipeId } = useParams();
@@ -62,9 +61,7 @@ const NewRecipeIngredientsPage = () => {
     }
     else if (!result) {
       e.preventDefault()
-      // history.push(`/recipes/new/${recipeId}/ingredients`)
     }
-    
   }
 
   const recipeHasIngredients = ingredients?.some(
