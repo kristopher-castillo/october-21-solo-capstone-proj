@@ -83,6 +83,8 @@ const NewRecipeIngredientsPage = () => {
 
   if (!sessionUser) history.push("/");
 
+  document.title = "New Recipe";
+
   return (
     <>
       <div className="new-ingredients-page-container">

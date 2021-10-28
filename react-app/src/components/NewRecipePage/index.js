@@ -39,6 +39,8 @@ const NewRecipePage = () => {
 
   if (!sessionUser) history.push('/')
 
+  document.title = "New Recipe";
+
   return (
     <>
       <div className="new-recipe-container">
