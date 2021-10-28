@@ -6,9 +6,27 @@
 
 .edit-recipe-title {
   height: 40px;
+  font-size: 1.4rem;
 }
 
 .edit-recipe-image-container {
   display: flex;
   justify-content: center;
+}
+
+.edit-recipe-yield {
+  width: 40px;
+  font-size: 1.2rem;
+}
+
+.edit-recipe-time {
+  width: 40px;
+  font-size: 1.2rem;
+}
+
+.edit-recipe-description {
+  margin-bottom: 10px;
+  width: 70vw;
+  font: 1.2rem Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
 }

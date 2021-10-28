@@ -75,10 +75,12 @@ const EditRecipePage = () => {
         <div className="edit-recipe-head-container">
           <form onSubmit={handleSubmit}>
             <div className="edit-recipe-info-container">
+              <label>Recipe title:</label>
               {title ? (
                 <input
                   className="edit-recipe-title"
                   type="text"
+                  maxLength="100"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 ></input>
@@ -86,6 +88,7 @@ const EditRecipePage = () => {
                 <input
                   className="edit-recipe-title"
                   type="text"
+                  maxLength="100"
                   value={recipe?.title}
                   onChange={(e) => setTitle(e.target.value)}
                 ></input>
@@ -94,6 +97,8 @@ const EditRecipePage = () => {
               {yield_amount ? (
                 <input
                   type="number"
+                  min="1"
+                  max="100"
                   className="edit-recipe-yield"
                   onChange={(e) => setYieldAmount(e.target.value)}
                   value={yield_amount}
@@ -101,6 +106,8 @@ const EditRecipePage = () => {
               ) : (
                 <input
                   type="number"
+                  min="1"
+                  max="100"
                   className="edit-recipe-yield"
                   onChange={(e) => setYieldAmount(e.target.value)}
                   value={recipe?.yield_amount}
@@ -110,6 +117,8 @@ const EditRecipePage = () => {
               {completion_time ? (
                 <input
                   type="number"
+                  min="1"
+                  max="100"
                   className="edit-recipe-time"
                   onChange={(e) => setTime(e.target.value)}
                   value={completion_time}
@@ -117,6 +126,8 @@ const EditRecipePage = () => {
               ) : (
                 <input
                   type="number"
+                  min="1"
+                  max="100"
                   className="edit-recipe-time"
                   onChange={(e) => setTime(e.target.value)}
                   value={recipe?.completion_time}
@@ -131,15 +142,18 @@ const EditRecipePage = () => {
               >
                 {recipe?.description}
               </p> */}
+              <label>Recipe description:</label>
               {description ? (
                 <textarea
                   className="edit-recipe-description"
+                  rows="6"
                   onChange={(e) => setDescription(e.target.value)}
                   value={description}
                 ></textarea>
               ) : (
                 <textarea
                   className="edit-recipe-description"
+                  rows="6"
                   onChange={(e) => setDescription(e.target.value)}
                   value={recipe?.description}
                 ></textarea>
