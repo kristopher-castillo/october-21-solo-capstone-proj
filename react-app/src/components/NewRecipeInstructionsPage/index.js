@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect, Link } from "react-router-dom";
-import { createInstructions, getRecipeInstructions } from "../../store/instructions";
+import { useHistory, useParams, Link } from "react-router-dom";
+import { createInstructions, deleteInstructions, getRecipeInstructions } from "../../store/instructions";
 import { getOneRecipe, deleteRecipe } from "../../store/recipe";
 import { getImages } from "../../store/image";
 import {getRecipeIngredients} from "../../store/ingredient";
@@ -41,7 +41,7 @@ const NewRecipeInstructionsPage = () => {
   }, [dispatch]);
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const newInstructions = {
@@ -50,8 +50,10 @@ const NewRecipeInstructionsPage = () => {
       recipe_id: recipeId
     };
 
-    await dispatch(createInstructions(newInstructions));
-    await dispatch(getRecipeInstructions(recipeId))
+    dispatch(createInstructions(newInstructions));
+    setStep(+step + 1)
+    setContent("")
+
   };
 
 
@@ -61,22 +63,30 @@ const NewRecipeInstructionsPage = () => {
     );
 
     if (result) {
+      e.preventDefault();
       dispatch(deleteRecipe(recipeId));
+      history.push('/')
     } else if (!result) {
       e.preventDefault();
     }
   };
 
+    const handleInstructionDelete = (e, instructionId) => {
+      e.preventDefault();
+
+      dispatch(deleteInstructions(instructionId, recipeId));
+    };
+
   const recipeHasInstructions = instructions?.some(
     (ingredient) => ingredient.recipe_id === +recipeId
   );
 
-  const NextButton = () => {
+  const SubmitButton = () => {
     if (recipeHasInstructions) {
       setHidePlaceholder(true)
       return (
         <Link to={`/recipes/${recipeId}`}>
-          <button type="button">Next</button>
+          <button type="button">Submit</button>
         </Link>
       );
     }
@@ -88,7 +98,7 @@ const NewRecipeInstructionsPage = () => {
   return (
     <>
       <div className="new-instructions-page-container">
-        <h1 className="new-instructions-page-title">New Instructions Page</h1>
+        <h1 className="new-instructions-page-title">Add Preparation Steps to Your Recipe</h1>
         <div className="recipe-title-container">
           <h1 className="recipe-title">{recipe?.title}</h1>
         </div>
@@ -113,7 +123,10 @@ const NewRecipeInstructionsPage = () => {
         </div>
         <hr></hr>
         <div className="new-instructions-body-container">
-          <div className="new-ingredients-list-container" id="ing-list-instructions">
+          <div
+            className="new-ingredients-list-container"
+            id="ing-list-instructions"
+          >
             <p className="new-ingredients-title">Ingredients</p>
             <div className="new-recipe-ingredients-list">
               {ingredients?.map((ingredient) => (
@@ -147,25 +160,37 @@ const NewRecipeInstructionsPage = () => {
                   setContent(e.target.value);
                 }}
                 value={content}
+                required
               ></textarea>
               <button className="new-instructions-submit-btn">Add Step</button>
             </form>
           </div>
           <div className="new-steps-list-container">
-            <div className="placeholder-text-container">
+            <div
+              className="placeholder-text-container"
+              hidden={hidePlaceholder}
+            >
               <p className="new-steps-placeholder" hidden={hidePlaceholder}>
                 Your recipe's steps will appear here.
               </p>
             </div>
-            <div className="new-recipe-steps-list">  
+            <div className="new-recipe-steps-list">
               {instructions?.map((instruction) => (
                 <>
                   <h4 className="instructions-step-num">
                     Step {instruction.step}
                   </h4>
                   <p className="instructions-step-content">
-                    {" "}
                     {instruction.content}
+                    <span
+                      className="ingredient-item-remove"
+                      onClick={(e) => {
+                        handleInstructionDelete(e, instruction.id);
+                      }}
+                  
+                    >
+                      X
+                    </span>
                   </p>
                 </>
               ))}
@@ -174,9 +199,15 @@ const NewRecipeInstructionsPage = () => {
         </div>
         <div className="new-instructions-buttons-container">
           <Link to="/">
-            <button className="new-instructions-cancel-btn">Cancel</button>
+            <button
+              className="new-instructions-cancel-btn"
+              type="button"
+              onClick={handleRecipeDelete}
+            >
+              Cancel
+            </button>
           </Link>
-          <NextButton />
+          <SubmitButton />
         </div>
       </div>
     </>

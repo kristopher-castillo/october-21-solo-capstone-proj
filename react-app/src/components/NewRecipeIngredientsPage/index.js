@@ -57,7 +57,9 @@ const NewRecipeIngredientsPage = () => {
     const result = window.confirm("Cancelling will erase your recipe. Click OK to confirm.")
 
     if (result) {
+      e.preventDefault()
       dispatch(deleteRecipe(recipeId))
+      history.push("/");
     }
     else if (!result) {
       e.preventDefault()

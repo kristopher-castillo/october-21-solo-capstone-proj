@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getRecipes } from "../../store/recipe";
 import { getImages } from "../../store/image";
 
@@ -19,22 +19,25 @@ const RecipesPage = () => {
       <h1>Browse Recipes</h1>
       <div className="recipe-card-container">
         {recipes?.map((recipe, ind) => (
-        <Link to={`/recipes/${recipe?.id}`}>
-          <div className="recipe-card" key={ind}>
-            <img className="recipe-card-img"
-              src={images?.find((image => image.recipe_id === recipe?.id)).image_url}
-              alt="recipe card"
-            >
-            </img>
-            <div className="recipe-card-title">{recipe?.title}</div>
-          </div>
-        </Link>
-      ))}   
+          <Link to={`/recipes/${recipe?.id}`} key={ind}>
+            <div className="recipe-card" key={ind}>
+              <img
+                className="recipe-card-img"
+                src={
+                  images?.find((image) => image.recipe_id === recipe?.id)
+                    .image_url
+                }
+                alt="recipe card"
+              ></img>
+              <div className="recipe-card-title" key={ind}>
+                {recipe?.title}
+              </div>
+            </div>
+          </Link>
+        ))}
       </div>
-      
-
     </div>
-  )
+  );
 
 }
 

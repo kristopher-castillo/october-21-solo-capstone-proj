@@ -56,10 +56,11 @@ export const updateInstructions = (instructionsData, instructionsId) => async (d
   }
 };
 
-export const deleteInstructions = (instructionsId) => async (dispatch) => {
+export const deleteInstructions = (instructionsId, recipeId) => async (dispatch) => {
   const response = await fetch(`/api/instructions/${instructionsId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
+    body: recipeId
   });
 
   if (response.ok) {

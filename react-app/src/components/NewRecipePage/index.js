@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect, Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { createRecipe } from "../../store/recipe";
 import { createImage } from "../../store/image";
 
@@ -32,7 +32,7 @@ const NewRecipePage = () => {
     imageData.append("image", image)
     imageData.append("recipe_id", createdRecipe.id);
     
-    dispatch(createImage(imageData))
+    await dispatch(createImage(imageData))
 
     history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
   }

@@ -49,6 +49,11 @@ padding: 75px 0px;
   margin-bottom: 20px;
 }
 
+.recipe-head-container {
+  display: flex;
+}
+
+
 .new-ingredients-submit-btn {
   width: 140px;
   height: 35px;
