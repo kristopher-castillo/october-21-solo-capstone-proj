@@ -93,7 +93,6 @@ const Notes = () => {
                             setEditContent(e.target.value);
                             setEditNoteId(note?.id);
                           }}
-                          placeholder={note?.content}
                           value={editContent}
                           required
                         ></textarea>
@@ -120,6 +119,8 @@ const Notes = () => {
                     hideContent={setHideContent}
                     hideEdit={setHideEdit}
                     hideButtons={hideContent}
+                    noteContent={note?.content}
+                    editContent={setEditContent}
                   />
                 </div>
                 <hr className="single-note-break"></hr>
