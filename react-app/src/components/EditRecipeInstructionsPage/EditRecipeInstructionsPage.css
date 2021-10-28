@@ -3,5 +3,145 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 100%;
-padding-top: 75px;
+padding: 75px 0px;
+}
+
+.edit-steps-list-container {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-instructions-page-title {
+  color: rgba(0, 206, 142, 1);
+}
+
+.edit-instructions-container {
+  width: 70vw;
+}
+
+.edit-instructions-title {
+  font-size: 1.5rem;
+  color: rgba(0, 206, 142, 1);
+  font-weight:bold;
+}
+
+.edit-instructions-body-container {
+  width: 70vw;
+}
+
+.edit-instructions-list-container {
+  min-height: 30vh;
+  width: 30vw;
+}
+
+.edit-instructions-form-container form {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-instructions-num {
+  width: 50px;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.edit-instructions-content {
+  margin: 15px 0px;
+  width: 100%;
+  font: 1.2rem Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
+}
+
+.recipe-head-container {
+  display: flex;
+}
+
+.edit-form-buttons-container {
+  width: 30vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-instructions-submit-btn, .edit-instructions-cancel-edit-btn{
+  width: 140px;
+  height: 35px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 8px 0px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.edit-instructions-submit-btn:hover {
+  background-color: #00CE8E;
+  color: white;
+}
+
+.edit-instructions-form-container label {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 10px 0px;
+  color: rgba(0, 206, 142, 1);
+}
+
+.ingredient-item {
+  margin: 6px 0px;
+}
+
+.ingredient-item-remove, .ingredient-item-edit {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 1px 5px;
+  margin-left: 10px;
+  text-decoration: none;
+  font-size: .8rem;
+}
+
+.ingredient-item-remove:hover, .ingredient-item-edit:hover {
+  background-color: #00CE8E;
+  color: white;
+}
+
+.edit-instructions-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  padding-top: 40px;
+}
+
+.edit-instructions-buttons-container button {
+  margin: 0px 15px;
+  width: 125px;
+  height: 40px;
+  border: 1px solid rgba(0, 206, 142, 1);
+  color: rgba(0, 206, 142, 1);
+  background-color: white;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  box-sizing: border-box;  
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.edit-instructions-buttons-container button:hover {
+  background-color: #00CE8E;
+  color: white;
 }

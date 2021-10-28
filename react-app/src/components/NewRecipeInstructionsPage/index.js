@@ -71,11 +71,11 @@ const NewRecipeInstructionsPage = () => {
     }
   };
 
-    const handleInstructionDelete = (e, instructionId) => {
-      e.preventDefault();
+  const handleInstructionDelete = (e, instructionId) => {
+    e.preventDefault();
 
-      dispatch(deleteInstructions(instructionId, recipeId));
-    };
+    dispatch(deleteInstructions(instructionId, recipeId));
+  };
 
   const recipeHasInstructions = instructions?.some(
     (ingredient) => ingredient.recipe_id === +recipeId
@@ -94,6 +94,8 @@ const NewRecipeInstructionsPage = () => {
   };
 
   if (!sessionUser) history.push("/");
+
+  document.title = "New Recipe";
 
   return (
     <>
@@ -187,7 +189,6 @@ const NewRecipeInstructionsPage = () => {
                       onClick={(e) => {
                         handleInstructionDelete(e, instruction.id);
                       }}
-                  
                     >
                       X
                     </span>

@@ -20,6 +20,7 @@ const HomePage = () => {
     recommendedRecipes = recipes.sort(() => 0.5 - Math.random()).slice(0, 3)
   }
 
+  document.title = "Home"
   return (
     <>
       <div className="home-container">

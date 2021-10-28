@@ -14,6 +14,7 @@ const RecipesPage = () => {
   useEffect(() => dispatch(getRecipes()), [dispatch])
   useEffect(() => dispatch(getImages()), [dispatch])
 
+  document.title = "Browse Recipes";
   return (
     <div className="all-recipes-page-container">
       <h1>Browse Recipes</h1>

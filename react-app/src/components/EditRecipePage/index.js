@@ -13,92 +13,127 @@ const EditRecipePage = () => {
   const images = useSelector((state) => state.images?.images?.all_images);
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId);
   const [title, setTitle] = useState("");
-  const [yield_amount, setYieldAmount] = useState(recipe?.yield_amount);
-  const [completion_time, setTime] = useState(recipe?.completion_time);
+  const [yield_amount, setYieldAmount] = useState(1);
+  const [completion_time, setTime] = useState(1);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState(recipeImage);
+  const [image, setImage] = useState("");
 
-  
   const history = useHistory();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOneRecipe(recipeId));
-  }, [dispatch, recipeId]);
+    setTitle(recipe?.title);
+    setYieldAmount(recipe?.yield_amount)
+    setTime(recipe?.completion_time)
+    setDescription(recipe?.description)
+  }, [dispatch, recipe?.completion_time, recipe?.description, recipe?.title, recipe?.yield_amount, recipeId]);
 
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
 
-  console.log("recipe", recipe)
-  console.log("title", title)
-  console.log("yield", yield_amount)
-  console.log("time", completion_time)
-  console.log("desc", description)
-  console.log("image", recipeImage)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
+    // if(!title) setTitle(recipe?.title)
+    // if (!description) setDescription(recipe?.description)
+    // if (!yield_amount) setYieldAmount(recipe?.yield_amount)
+    // if (!completion_time) setTime(recipe?.completion_time)
+      
+    
     const updatedRecipe = {
       title,
       description,
       yield_amount,
       completion_time,
-    };
+    }
 
-    const createdRecipe = await dispatch(updateRecipe(updatedRecipe, recipeId));
+    console.log(updatedRecipe)
 
+    dispatch(updateRecipe(updatedRecipe, recipeId));
+    
     if (image) {
       const updatedImageData = new FormData();
       updatedImageData.append("image", image);
-      updatedImageData.append("recipe_id", createdRecipe.id);
+      updatedImageData.append("recipe_id", recipeId);
 
       dispatch(updateImage(updatedImageData, recipeImage.id));
     }
 
-    history.push(`/recipes/edit/${createdRecipe.id}/ingredients`);
+    history.push(`/recipes/edit/${recipeId}/ingredients`);
   };
 
   if (!sessionUser) history.push("/");
 
+  document.title = "Edit Recipe";
+
   return (
     <>
       <div className="new-recipe-container">
-        <h1>Edit Recipe Page</h1>
-        <div className="recipe-title-container">
-          <h1
-            className="recipe-title"
-            contentEditable="true"
-            suppressContentEditableWarning={true}
-            onBlur={(e) => setTitle(e.target.innerText)}
-            value={title}
-          >
-            {recipe?.title}
-          </h1>
-        </div>
-        <hr></hr>
-        <div className="recipe-head-container">
+        <h1>Click Below to Edit Your Recipe</h1>
+        <div className="edit-recipe-head-container">
           <form onSubmit={handleSubmit}>
-            <div className="recipe-info-container">
+            <div className="edit-recipe-info-container">
+              <label>Recipe title:</label>
+              {title ? (
+                <input
+                  className="edit-recipe-title"
+                  type="text"
+                  maxLength="100"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                ></input>
+              ) : (
+                <input
+                  className="edit-recipe-title"
+                  type="text"
+                  maxLength="100"
+                  value={recipe?.title}
+                  onChange={(e) => setTitle(e.target.value)}
+                ></input>
+              )}
               <label>Recipe yield:</label>
-              <input
-                type="number"
-                className="recipe-yield"
-                onChange={(e) => setYieldAmount(e.target.value)}
-                placeholder={recipe?.yield_amount}
-                value={yield_amount}
-              ></input>
+              {yield_amount ? (
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  className="edit-recipe-yield"
+                  onChange={(e) => setYieldAmount(e.target.value)}
+                  value={yield_amount}
+                ></input>
+              ) : (
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  className="edit-recipe-yield"
+                  onChange={(e) => setYieldAmount(e.target.value)}
+                  value={recipe?.yield_amount}
+                ></input>
+              )}
               <label>Completion time in minutes:</label>
-              <input
-                type="number"
-                className="recipe-time"
-                onChange={(e) => setTime(e.target.value)}
-                placeholder={recipe?.completion_time}
-                value={completion_time}
-              ></input>
-              <p
+              {completion_time ? (
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  className="edit-recipe-time"
+                  onChange={(e) => setTime(e.target.value)}
+                  value={completion_time}
+                ></input>
+              ) : (
+                <input
+                  type="number"
+                  min="1"
+                  max="100"
+                  className="edit-recipe-time"
+                  onChange={(e) => setTime(e.target.value)}
+                  value={recipe?.completion_time}
+                ></input>
+              )}
+              {/* <p
                 className="recipe-description"
                 contentEditable="true"
                 suppressContentEditableWarning={true}
@@ -106,9 +141,25 @@ const EditRecipePage = () => {
                 value={description}
               >
                 {recipe?.description}
-              </p>
+              </p> */}
+              <label>Recipe description:</label>
+              {description ? (
+                <textarea
+                  className="edit-recipe-description"
+                  rows="6"
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={description}
+                ></textarea>
+              ) : (
+                <textarea
+                  className="edit-recipe-description"
+                  rows="6"
+                  onChange={(e) => setDescription(e.target.value)}
+                  value={recipe?.description}
+                ></textarea>
+              )}
             </div>
-            <div className="recipe-image-container">
+            <div className="edit-recipe-image-container">
               <img
                 className="recipe-image"
                 src={recipeImage?.image_url}
@@ -121,7 +172,7 @@ const EditRecipePage = () => {
 
         <form onSubmit={handleSubmit} id="new-recipe-form">
           <div className="new-recipe-image-container">
-            <p className="card-text">Choose an image for your recipe</p>
+            <p className="card-text">Choose a new image for your recipe</p>
             <input
               type="file"
               name="file"

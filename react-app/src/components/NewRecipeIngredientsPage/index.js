@@ -83,12 +83,14 @@ const NewRecipeIngredientsPage = () => {
 
   if (!sessionUser) history.push("/");
 
+  document.title = "New Recipe";
+
   return (
     <>
       <div className="new-ingredients-page-container">
         <h1 className="new-ingredients-page-title">Add Ingredients to Your Recipe</h1>
         <div className="recipe-title-container">
-          <h1 className="recipe-title">{recipe?.title}</h1>
+          <h className="recipe-title">{recipe?.title}</h>
         </div>
         <hr></hr>
         <div className="recipe-head-container">
@@ -131,7 +133,7 @@ const NewRecipeIngredientsPage = () => {
               <input
                 className="new-ingredient-name"
                 type="text"
-                pattern="^[a-zA-Z_.,!']+$"
+                pattern="^[a-zA-Z_.,!' ]+$"
                 title="Ingredient names must only contain letters"
                 name="ingredient-name"
                 placeholder="Enter the name an ingredient here"
