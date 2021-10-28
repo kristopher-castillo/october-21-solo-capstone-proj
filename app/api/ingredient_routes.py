@@ -34,7 +34,11 @@ def new_ingredient():
     )
     db.session.add(new_ingredient)
     db.session.commit()
-    return new_ingredient.to_dict()
+
+    ingredients = Ingredient.query.filter(Ingredient.recipe_id == data['recipe_id'])
+    return {
+        'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
+    }
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
@@ -53,7 +57,12 @@ def update_ingredient(id):
     updated_ingredient.amount_unit=data["amount_unit"],
     updated_ingredient.recipe_id=data["recipe_id"]
     db.session.commit()
-    return updated_ingredient.to_dict()
+
+    ingredients = Ingredient.query.filter(
+        Ingredient.recipe_id == updated_ingredient.recipe_id)
+    return {
+        'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
+    }
   else:
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
@@ -65,9 +74,12 @@ def delete_ingredient(id):
   Delete an ingredient by id.
   """
 
+  recipe_id = int(request.data.decode("utf-8"))
   ingredient_to_delete = Ingredient.query.filter(Ingredient.id == id).first()
   db.session.delete(ingredient_to_delete)
   db.session.commit()
+  
+  ingredients = Ingredient.query.filter(Ingredient.recipe_id == recipe_id)
   return {
-      'deleted_ingredient': ingredient_to_delete.to_dict()
+      'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
   }

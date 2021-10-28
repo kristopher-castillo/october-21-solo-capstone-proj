@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect, Link } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import {
   createInstructions,
   getRecipeInstructions,

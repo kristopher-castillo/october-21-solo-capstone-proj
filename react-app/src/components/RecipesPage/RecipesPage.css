@@ -5,8 +5,12 @@
   padding-top: 75px;
 }
 
+.all-recipes-page-container h1 {
+  color: #00CE8E;
+}
+
 .recipe-card-container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -17,11 +21,19 @@
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .recipe-card-img {
   max-width: 450px;
   max-height: 450px;
+}
+
+.recipe-card-title {
+  text-decoration: none;
+  color: black;
+  padding: 10px 0px;
+  font-size: 1.1rem;
+  text-align: center;
 }

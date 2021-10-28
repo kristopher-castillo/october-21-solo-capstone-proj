@@ -8,6 +8,7 @@
 }
 
 .notes-content-container {
+  padding-top: 40px;
   width: 50vw;
   display: flex;
   flex-direction: column;

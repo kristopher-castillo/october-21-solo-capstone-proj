@@ -19,7 +19,7 @@ export const getUsers = () => async (dispatch) => {
 const initialState = { users: null };
 
 export default function usersReducer(state = initialState, action) {
-  const newState = { ...state };
+  
   switch (action.type) {
     case LOAD: {
       return { users: action.users };

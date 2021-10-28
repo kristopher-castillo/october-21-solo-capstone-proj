@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory, useParams, Redirect, Link } from "react-router-dom";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { updateRecipe, getOneRecipe } from "../../store/recipe";
 import { updateImage, getImages } from "../../store/image";
 
@@ -10,7 +10,6 @@ const EditRecipePage = () => {
   const {recipeId} = useParams()
   const sessionUser = useSelector((state) => state.session.user);
   const recipe = useSelector((state) => state.recipes?.recipes);
-  const users = useSelector((state) => state.users?.users?.users);  
   const images = useSelector((state) => state.images?.images?.all_images);
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId);
   const [title, setTitle] = useState("");

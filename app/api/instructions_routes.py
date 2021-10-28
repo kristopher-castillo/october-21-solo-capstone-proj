@@ -34,7 +34,12 @@ def new_instruction():
     )
     db.session.add(new_instruction)
     db.session.commit()
-    return new_instruction.to_dict()
+
+    instructions = Instructions.query.filter(Instructions.recipe_id == data['recipe_id'])
+
+    return {
+        'recipe_instructions': [instruction.to_dict() for instruction in instructions]
+    }
   else:
     print('INSTRUCTIONS FORM FAILED')
     return {'errors': validation_errors_to_error_messages(form.errors)}
@@ -54,7 +59,12 @@ def update_instruction(id):
     updated_instruction.content=data["content"],
     updated_instruction.recipe_id=data["recipe_id"]
     db.session.commit()
-    return updated_instruction.to_dict()
+
+    instructions = Instructions.query.filter(
+        Instructions.recipe_id == updated_instruction.recipe_id)
+    return {
+        'recipe_instructions': [instruction.to_dict() for instruction in instructions]
+    }
   else:
     print('INSTRUCTIONS FORM FAILED')
     return {'errors': validation_errors_to_error_messages(form.errors)}
@@ -67,11 +77,15 @@ def delete_instruction(id):
   Delete an instruction step by id.
   """
 
+  recipe_id = int(request.data.decode("utf-8"))
   instruction_to_delete = Instructions.query.filter(Instructions.id == id).first()
   db.session.delete(instruction_to_delete)
   db.session.commit()
+  
+  instructions = Instructions.query.filter(
+        Instructions.recipe_id == recipe_id)
   return {
-      'deleted_instruction': instruction_to_delete.to_dict()
+      'recipe_instructions': [instruction.to_dict() for instruction in instructions]
   }
 
 

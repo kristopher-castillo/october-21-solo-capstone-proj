@@ -72,7 +72,7 @@ const RecipePage = () => {
               history.push("/");
             }}
           >
-            Delete this Recipe
+            Delete Recipe
           </button>
         </div>
       );
@@ -91,8 +91,8 @@ const RecipePage = () => {
         <hr></hr>
         <div className="recipe-head-container">
           <div className="recipe-info-container">
-            <p className="recipe-yield">Yield: {recipe?.yield_amount} servings</p>
-            <p className="recipe-time">Time: {recipe?.completion_time} minutes</p>
+            <p className="recipe-yield">Yield: <span>{recipe?.yield_amount} servings</span></p>
+            <p className="recipe-time">Time: <span>{recipe?.completion_time} minutes</span></p>
             <p className="recipe-description">{recipe?.description}</p>          
           </div>
           <div className="recipe-image-container">
