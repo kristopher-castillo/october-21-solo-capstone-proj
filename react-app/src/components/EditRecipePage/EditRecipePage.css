@@ -1,0 +1,14 @@
+.edit-recipe-info-container {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+}
+
+.edit-recipe-title {
+  height: 40px;
+}
+
+.edit-recipe-image-container {
+  display: flex;
+  justify-content: center;
+}
