@@ -24,7 +24,7 @@ const HomePage = () => {
   return (
     <>
       <div className="home-container">
-        <Link to="/recipes/4/">
+        <Link className="home-header-link"to="/recipes/4/">
           <div className="home-header-image-container">
             <img
               className="home-header-image"
