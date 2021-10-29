@@ -8,10 +8,10 @@ const Footer = () => {
     <footer>
       <div className="footer-links">
         <p>Follow Me:</p>
-        <a href="https://www.linkedin.com/in/kristopher-c-castillo-a59b7a16b/">
+        <a className="footer-linkedin"href="https://www.linkedin.com/in/kristopher-c-castillo-a59b7a16b/">
           <p>LinkedIn</p>
         </a>
-        <a href="https://github.com/kristopher-castillo">
+        <a className="footer-github" href="https://github.com/kristopher-castillo">
           <p>GitHub</p>
         </a>
       </div>

@@ -16,7 +16,12 @@ nav {
 
 
 .logo-link, .recipes-link {
-  color: black;
+  color: white;
+  text-decoration: none;
+}
+
+.logo-link:visited, .logo-link:link, .recipes-link:visited, .recipes-link:link {
+  color: white;
   text-decoration: none;
 }
 
