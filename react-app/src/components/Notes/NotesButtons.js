@@ -4,7 +4,7 @@ import { deleteNote } from "../../store/note";
 
 import "./Notes.css"
 
-const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, hideButtons, noteContent, editContent }) => {
+const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, hideButtons, noteContent, editContent, noteId, editNoteId }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -19,6 +19,7 @@ const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, 
             hideContent(true)
             hideEdit(false)
             editContent(noteContent)
+            editNoteId(noteId)
             // setHideButtons(true)
           }}
         >

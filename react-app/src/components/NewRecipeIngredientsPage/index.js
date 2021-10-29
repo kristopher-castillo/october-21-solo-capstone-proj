@@ -90,7 +90,7 @@ const NewRecipeIngredientsPage = () => {
       <div className="new-ingredients-page-container">
         <h1 className="new-ingredients-page-title">Add Ingredients to Your Recipe</h1>
         <div className="recipe-title-container">
-          <h className="recipe-title">{recipe?.title}</h>
+          <h2 className="recipe-title">{recipe?.title}</h2>
         </div>
         <hr></hr>
         <div className="recipe-head-container">

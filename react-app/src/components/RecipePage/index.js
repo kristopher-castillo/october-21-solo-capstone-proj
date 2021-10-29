@@ -91,12 +91,20 @@ const RecipePage = () => {
         <hr></hr>
         <div className="recipe-head-container">
           <div className="recipe-info-container">
-            <p className="recipe-yield">Yield: <span>{recipe?.yield_amount} servings</span></p>
-            <p className="recipe-time">Time: <span>{recipe?.completion_time} minutes</span></p>
-            <p className="recipe-description">{recipe?.description}</p>          
+            <p className="recipe-yield">
+              Yield: <span>{recipe?.yield_amount} servings</span>
+            </p>
+            <p className="recipe-time">
+              Time: <span>{recipe?.completion_time} minutes</span>
+            </p>
+            <p className="recipe-description">{recipe?.description}</p>
           </div>
           <div className="recipe-image-container">
-              <img className="recipe-image" src={recipeImage?.image_url} alt={recipeId}></img>
+            <img
+              className="recipe-image"
+              src={recipeImage?.image_url}
+              alt={recipeId}
+            ></img>
           </div>
         </div>
         <hr></hr>
@@ -115,22 +123,31 @@ const RecipePage = () => {
             <h3 className="recipe-steps-title">Preparation</h3>
             <ul className="recipe-steps-list">
               {instructions?.map((instruction) => (
-                <>
-                  <h4 className="instructions-step-num">
-                  Step {instruction.step}
+                <React.Fragment key={instruction.id}>
+                  <h4
+                    className="instructions-step-num"
+                    key={instruction.id + "num"}
+                  >
+                    Step {instruction.step}
                   </h4>
-                  <p className="instructions-step-content"> {instruction.content}</p>
-                </>
-                ))}
+                  <p
+                    className="instructions-step-content"
+                    key={instruction.id + 'content'}
+                  >
+                    {" "}
+                    {instruction.content}
+                  </p>
+                </React.Fragment>
+              ))}
             </ul>
-          </div>        
+          </div>
         </div>
         <div className="recipe-notes-container">
           <Notes />
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default RecipePage;

@@ -41,6 +41,8 @@ const Notes = () => {
       content: editContent,
       recipe_id: recipeId
     }
+
+    console.log(updatedNote)
     dispatch(updateNote(updatedNote, editNoteId))
   }
 
@@ -74,7 +76,7 @@ const Notes = () => {
             {notes?.map((note) => (
               <div className="notes-item" key={note?.id}>
                 <div className="note-top-container">
-                  <div className="note-user">
+                  <div className="note-user" hidden={hideContent}>
                     {users?.find((user) => note?.user_id === user.id).username}
                   </div>
                   <div className="note-content" hidden={hideContent}>
@@ -104,14 +106,14 @@ const Notes = () => {
                             setHideEdit(true);
                           }}
                         >
-                          Submit
+                          Confirm Edit
                         </button>
                       </form>
                     </div>
                   ) : null}
                   
                 </div>
-                <div className="note-btn-container">
+                <div className="note-btn-container" >
                   <NotesButtons
                     isNotesUser={note?.user_id === sessionUser?.id}
                     deleteId={note?.id}
@@ -121,9 +123,11 @@ const Notes = () => {
                     hideButtons={hideContent}
                     noteContent={note?.content}
                     editContent={setEditContent}
+                    noteId={note?.id}
+                    editNoteId={setEditNoteId}
                   />
                 </div>
-                <hr className="single-note-break"></hr>
+                <hr className="single-note-break" hidden={hideContent}></hr>
               </div>
             ))}
           </div>

@@ -37,7 +37,7 @@ const HomePage = () => {
               <p className="header-recipe-blurb">
                 This hearty crowd-pleaser makes good use of leftovers
               </p>
-              <p className="header-recipe-author">By demo</p>
+              <p className="header-recipe-author">By DemoChef</p>
             </div>
           </div>
         </Link>

@@ -58,6 +58,8 @@ const LoginSignupModal = ({restrictedAccess}) => {
 
   const demoLogin = () => {
     dispatch(login("demo@aa.io", "password"))
+    setShowModal(false);
+    // onModalClose()
   }
 
   const onModalClose = () => {
