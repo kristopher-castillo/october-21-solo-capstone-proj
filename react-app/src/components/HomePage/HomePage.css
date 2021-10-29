@@ -6,7 +6,11 @@
   padding-bottom: 75px;
 }
 
-.home-container a:visited,a:link {
+.home-header-link:visited,.home-header-link:link {
+  color: black;
+}
+
+.recommended-recipes-container a:visited, .recommended-recipes-container a:link {
   color: black;
 }
 
