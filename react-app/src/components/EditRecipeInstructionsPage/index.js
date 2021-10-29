@@ -105,14 +105,20 @@ const EditRecipeInstructionsPage = () => {
     <>
       <div className="edit-instructions-page-container">
         <div className="edit-steps-list-container">
-          <h1 className="edit-instructions-page-title">Edit Instructions Page</h1>
+          <h1 className="edit-instructions-page-title">
+            Edit Instructions Page
+          </h1>
           <ul className="edit-recipe-steps-list">
             {instructions?.map((instruction) => (
-              <>
-                <h4 className="instructions-step-num">
+              <React.Fragment key={instruction?.id}>
+                <h4
+                  className="instructions-step-num"
+                  key={instruction?.id + "num"}
+                >
                   Step {instruction.step}
                   <span
                     className="ingredient-item-remove"
+                    key={instruction?.id + "remove"}
                     onClick={(e) => {
                       handleInstructionDelete(e, instruction.id);
                     }}
@@ -121,6 +127,7 @@ const EditRecipeInstructionsPage = () => {
                   </span>
                   <span
                     className="ingredient-item-remove"
+                    key={instruction?.id + "edit"}
                     onClick={(e) => {
                       handleInstructionEdit(
                         e,
@@ -133,10 +140,13 @@ const EditRecipeInstructionsPage = () => {
                     Edit
                   </span>
                 </h4>
-                <p className="instructions-step-content">
+                <p
+                  className="instructions-step-content"
+                  key={instruction?.id + "content"}
+                >
                   {instruction.content}
                 </p>
-              </>
+              </React.Fragment>
             ))}
           </ul>
         </div>

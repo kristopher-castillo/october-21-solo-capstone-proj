@@ -11,7 +11,6 @@ import "./NewRecipeInstructionsPage.css";
 const NewRecipeInstructionsPage = () => {
   const [step, setStep] = useState(1)
   const [content, setContent] = useState("")
-  const [hidePlaceholder, setHidePlaceholder] = useState(false)
   const { recipeId } = useParams();
   const sessionUser = useSelector((state) => state.session.user);
   const instructions = useSelector((state) => state.instructions?.instructions?.recipe_instructions);
@@ -21,6 +20,10 @@ const NewRecipeInstructionsPage = () => {
     (state) => state.ingredients?.ingredients?.recipe_ingredients
   );
   const recipeImage = images?.find((image) => image.recipe_id === +recipeId);
+  const recipeHasInstructions = instructions?.some(
+    (ingredient) => ingredient.recipe_id === +recipeId
+  );
+  const [hidePlaceholder, setHidePlaceholder] = useState(recipeHasInstructions)
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -34,7 +37,8 @@ const NewRecipeInstructionsPage = () => {
 
   useEffect(() => {
     dispatch(getOneRecipe(recipeId));
-  }, [dispatch, recipeId]);
+    setHidePlaceholder(recipeHasInstructions)
+  }, [dispatch, recipeHasInstructions, recipeId]);
 
   useEffect(() => {
     dispatch(getImages());
@@ -77,20 +81,19 @@ const NewRecipeInstructionsPage = () => {
     dispatch(deleteInstructions(instructionId, recipeId));
   };
 
-  const recipeHasInstructions = instructions?.some(
-    (ingredient) => ingredient.recipe_id === +recipeId
-  );
+
+
+  // if (recipeHasInstructions) setHidePlaceholder(true)
+    
 
   const SubmitButton = () => {
-    if (recipeHasInstructions) {
-      setHidePlaceholder(true)
-      return (
-        <Link to={`/recipes/${recipeId}`}>
-          <button type="button">Submit</button>
-        </Link>
-      );
-    }
-    return null;
+    
+    return (
+      <Link to={`/recipes/${recipeId}`}>
+        <button type="button">Submit</button>
+      </Link>
+    );
+
   };
 
   if (!sessionUser) history.push("/");
@@ -100,7 +103,9 @@ const NewRecipeInstructionsPage = () => {
   return (
     <>
       <div className="new-instructions-page-container">
-        <h1 className="new-instructions-page-title">Add Preparation Steps to Your Recipe</h1>
+        <h1 className="new-instructions-page-title">
+          Add Preparation Steps to Your Recipe
+        </h1>
         <div className="recipe-title-container">
           <h1 className="recipe-title">{recipe?.title}</h1>
         </div>
@@ -178,14 +183,21 @@ const NewRecipeInstructionsPage = () => {
             </div>
             <div className="new-recipe-steps-list">
               {instructions?.map((instruction) => (
-                <>
-                  <h4 className="instructions-step-num">
+                <React.Fragment key={instruction?.id}>
+                  <h4
+                    className="instructions-step-num"
+                    key={instruction?.id + "num"}
+                  >
                     Step {instruction.step}
                   </h4>
-                  <p className="instructions-step-content">
+                  <p
+                    className="instructions-step-content"
+                    key={instruction?.id + "content"}
+                  >
                     {instruction.content}
                     <span
                       className="ingredient-item-remove"
+                      key={instruction?.id + "remove"}
                       onClick={(e) => {
                         handleInstructionDelete(e, instruction.id);
                       }}
@@ -193,7 +205,7 @@ const NewRecipeInstructionsPage = () => {
                       X
                     </span>
                   </p>
-                </>
+                </React.Fragment>
               ))}
             </div>
           </div>
