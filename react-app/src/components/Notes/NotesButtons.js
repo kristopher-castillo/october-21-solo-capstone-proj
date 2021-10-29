@@ -4,7 +4,7 @@ import { deleteNote } from "../../store/note";
 
 import "./Notes.css"
 
-const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, hideButtons, noteContent, editContent, noteId, editNoteId }) => {
+const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, hideButtons, noteContent, editContent, noteId, editNoteId, content }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
@@ -30,7 +30,9 @@ const NotesButtons = ({ isNotesUser, deleteId, recipeId, hideContent, hideEdit, 
           type="button"
           onClick={() => {
             dispatch(deleteNote(deleteId, recipeId))
-            // setHideButtons(true)
+            editContent("")
+            editNoteId("")
+            content("")
           }}
         >
           Delete

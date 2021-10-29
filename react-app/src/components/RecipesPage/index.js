@@ -26,8 +26,7 @@ const RecipesPage = () => {
               <img
                 className="recipe-card-img"
                 src={
-                  images?.find((image) => image.recipe_id === recipe?.id)
-                    .image_url
+                  images?.find((image) => image.recipe_id === recipe?.id)?.image_url
                 }
                 alt="recipe card"
               ></img>

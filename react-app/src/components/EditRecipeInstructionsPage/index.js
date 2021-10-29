@@ -227,7 +227,7 @@ const EditRecipeInstructionsPage = () => {
           </div>
         </div>
         <div className="edit-instructions-buttons-container">
-          <Link to="/">
+          <Link to={`/recipes/${recipeId}`}>
             <button className="edit-instructions-cancel-btn">Cancel</button>
           </Link>
           <SubmitButton />
