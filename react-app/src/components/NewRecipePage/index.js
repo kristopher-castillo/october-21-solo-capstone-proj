@@ -7,6 +7,7 @@ import { createImage } from "../../store/image";
 import "./NewRecipePage.css";
 
 const NewRecipePage = () => {
+  const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
   const [yield_amount, setYieldAmount] = useState(1);
   const [completion_time, setTime] = useState(0);
@@ -27,14 +28,17 @@ const NewRecipePage = () => {
       completion_time
     }
     const createdRecipe = await dispatch(createRecipe(newRecipe))
-
-    const imageData = new FormData();
-    imageData.append("image", image)
-    imageData.append("recipe_id", createdRecipe.id);
+    if (Array.isArray(createdRecipe)) {
+      setErrors(createdRecipe);
+    } else if (typeof createdRecipe === "object") {
+      const imageData = new FormData();
+      imageData.append("image", image)
+      imageData.append("recipe_id", createdRecipe.id);
     
-    await dispatch(createImage(imageData))
+      await dispatch(createImage(imageData))
 
-    history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
+      history.push(`/recipes/new/${createdRecipe.id}/ingredients`)
+    }
   }
 
   if (!sessionUser) history.push('/')
@@ -46,12 +50,18 @@ const NewRecipePage = () => {
       <div className="new-recipe-container">
         <h1>Add Your Own Recipe</h1>
         <form onSubmit={handleSubmit} id="new-recipe-form">
+          <div className="errors">
+            {errors.map((error, ind) => (
+              <div key={ind}>{error.slice(error.indexOf(":") + 2)}</div>
+            ))}
+          </div>
           <div className="new-recipe-title-container">
             <label>Recipe Title:</label>
             <input
               className="new-recipe-title"
               type="text"
               name="title"
+              maxLength="100"
               placeholder="Type your recipe's title here"
               onChange={(e) => {
                 setTitle(e.target.value);
@@ -109,7 +119,7 @@ const NewRecipePage = () => {
               ></input>
             </div>
           </div>
-          <div className="new-recipe-buttons-container">  
+          <div className="new-recipe-buttons-container">
             <Link to="/">
               <button type="button" className="new-recipe-cancel-btn">
                 Cancel

@@ -89,8 +89,8 @@ const NewRecipeInstructionsPage = () => {
   const SubmitButton = () => {
     
     return (
-      <Link to={`/recipes/${recipeId}`}>
-        <button type="button">Submit</button>
+      <Link to={`/recipes/${recipeId}`} hidden={!hidePlaceholder}>
+        <button type="button" >Submit</button>
       </Link>
     );
 

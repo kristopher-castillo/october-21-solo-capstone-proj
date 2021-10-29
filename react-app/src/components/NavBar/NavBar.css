@@ -69,6 +69,10 @@ nav {
   width: 300px;
 }
 
+.user-container-loggedout button{
+cursor: pointer;
+}
+
 .new-recipe-link, .recipes-link-btn {
   width: 125px;
   height: 40px;
