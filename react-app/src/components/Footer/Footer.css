@@ -2,7 +2,7 @@ footer {
   bottom: 0;
   height: 75px;
   width: 100%;
-  background-color: black;
+  background-color: rgb(143, 143, 143);
   z-index: 8;
 }
 
