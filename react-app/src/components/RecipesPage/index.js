@@ -13,6 +13,7 @@ const RecipesPage = () => {
 
   useEffect(() => dispatch(getRecipes()), [dispatch])
   useEffect(() => dispatch(getImages()), [dispatch])
+  useEffect(() => window.scrollTo(0, 0), []);
 
   document.title = "Browse Recipes";
   

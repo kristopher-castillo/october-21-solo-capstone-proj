@@ -23,6 +23,8 @@ const RecipePage = () => {
   const history = useHistory()
   const dispatch = useDispatch();
 
+  useEffect(() => window.scrollTo(0, 0), []);
+
   useEffect(() => {
     dispatch(getOneRecipe(recipeId))
   }, [dispatch, recipeId])
