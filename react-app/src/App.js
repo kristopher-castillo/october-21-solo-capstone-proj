@@ -25,6 +25,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(getUsers()), [dispatch])
+  
 
   useEffect(() => {
     (async() => {

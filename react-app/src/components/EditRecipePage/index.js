@@ -176,12 +176,13 @@ const EditRecipePage = () => {
             <input
               type="file"
               name="file"
+              accept="image/*"
               onChange={(e) => setImage(e.target.files[0])}
             ></input>
           </div>
           <div className="edit-recipe-buttons-container">
             <button className="edit-recipe-submit-btn">Next</button>
-            <Link to="/">
+            <Link to={`/recipes/${recipeId}`}>
               <button type="button" className="edit-recipe-cancel-btn">
                 Cancel
               </button>

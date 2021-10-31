@@ -14,6 +14,7 @@ const HomePage = () => {
 
   useEffect(() => dispatch(getRecipes()), [dispatch]);
   useEffect(() => dispatch(getImages()), [dispatch]);
+  useEffect(() => window.scrollTo(0, 0), []);
 
   let recommendedRecipes;
   if (recipes) {
@@ -21,6 +22,7 @@ const HomePage = () => {
   }
 
   document.title = "Home"
+
   return (
     <>
       <div className="home-container">

@@ -35,7 +35,7 @@ def new_ingredient():
     db.session.add(new_ingredient)
     db.session.commit()
 
-    ingredients = Ingredient.query.filter(Ingredient.recipe_id == data['recipe_id'])
+    ingredients = Ingredient.query.filter(Ingredient.recipe_id == data['recipe_id']).order_by(Ingredient.id.asc())
     return {
         'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
     }
@@ -59,7 +59,7 @@ def update_ingredient(id):
     db.session.commit()
 
     ingredients = Ingredient.query.filter(
-        Ingredient.recipe_id == updated_ingredient.recipe_id)
+        Ingredient.recipe_id == updated_ingredient.recipe_id).order_by(Ingredient.id.asc())
     return {
         'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
     }

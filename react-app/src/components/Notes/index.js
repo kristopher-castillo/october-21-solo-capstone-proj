@@ -42,7 +42,6 @@ const Notes = () => {
       recipe_id: recipeId
     }
 
-    console.log(updatedNote)
     dispatch(updateNote(updatedNote, editNoteId))
   }
 
@@ -125,6 +124,7 @@ const Notes = () => {
                     editContent={setEditContent}
                     noteId={note?.id}
                     editNoteId={setEditNoteId}
+                    content={setContent}
                   />
                 </div>
                 <hr className="single-note-break" hidden={hideContent}></hr>

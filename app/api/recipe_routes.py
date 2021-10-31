@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request, redirect
 from app.models import Recipe, Ingredient, Instructions, Note, db
 from flask_login import current_user, login_required
-from app.forms import RecipeForm
+from app.forms import RecipeForm, RecipeEditForm
 
 
 recipe_routes = Blueprint('recipes', __name__)
@@ -60,7 +60,7 @@ def new_recipe():
     return new_recipe.to_dict()
   else:
     print('RECIPE FORM FAILED')
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @recipe_routes.route('/<int:id>', methods=['PATCH'])
@@ -71,7 +71,7 @@ def edit_recipe(id):
   """
 
   updated_recipe = Recipe.query.filter(Recipe.id == id).first()
-  form = RecipeForm()
+  form = RecipeEditForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     data = form.data
@@ -81,10 +81,12 @@ def edit_recipe(id):
     updated_recipe.completion_time=data['completion_time'],
     updated_recipe.user_id=updated_recipe.user_id
     db.session.commit()
+    
     return updated_recipe.to_dict()
   else:
+    print(updated_recipe.user_id)
     print('RECIPE UPDATE FORM FAILED')
-    return {'errors': validation_errors_to_error_messages(form.errors)}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @recipe_routes.route('/<int:id>', methods=['DELETE'])
@@ -97,17 +99,19 @@ def delete_recipe(id):
   recipe_to_delete = Recipe.query.filter(Recipe.id == id).first()
   db.session.delete(recipe_to_delete)
   db.session.commit()
+
+  recipes = Recipe.query.all()
   return {
-    'deleted_recipe': recipe_to_delete.to_dict()
+      'all_recipes': [recipe.to_dict() for recipe in recipes]
   }
-  
+
 @recipe_routes.route('/<int:id>/ingredients')
 def get_recipe_ingredients(id):
   """
   Get all ingredients associated with a specific id.
   """
 
-  ingredients = Ingredient.query.filter(Ingredient.recipe_id == id)
+  ingredients = Ingredient.query.filter(Ingredient.recipe_id == id).order_by(Ingredient.id.asc())
   
   return {
       'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
@@ -119,7 +123,7 @@ def get_recipe_instructions(id):
   Get all instructions associated with a specific id.
   """
 
-  instructions = Instructions.query.filter(Instructions.recipe_id == id)
+  instructions = Instructions.query.filter(Instructions.recipe_id == id).order_by(Instructions.step.asc())
   
   return {
       'recipe_instructions': [instruction.to_dict() for instruction in instructions]
@@ -131,7 +135,7 @@ def get_recipe_notes(id):
   Get all notes associated with a specific id.
   """
 
-  notes = Note.query.filter(Note.recipe_id == id)
+  notes = Note.query.filter(Note.recipe_id == id).order_by(Note.id.asc())
   
   return {
       'recipe_notes': [note.to_dict() for note in notes]

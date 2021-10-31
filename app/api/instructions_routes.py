@@ -35,7 +35,7 @@ def new_instruction():
     db.session.add(new_instruction)
     db.session.commit()
 
-    instructions = Instructions.query.filter(Instructions.recipe_id == data['recipe_id'])
+    instructions = Instructions.query.filter(Instructions.recipe_id == data['recipe_id']).order_by(Instructions.step.asc())
 
     return {
         'recipe_instructions': [instruction.to_dict() for instruction in instructions]
@@ -61,7 +61,7 @@ def update_instruction(id):
     db.session.commit()
 
     instructions = Instructions.query.filter(
-        Instructions.recipe_id == updated_instruction.recipe_id)
+        Instructions.recipe_id == updated_instruction.recipe_id).order_by(Instructions.step.asc())
     return {
         'recipe_instructions': [instruction.to_dict() for instruction in instructions]
     }
@@ -83,7 +83,7 @@ def delete_instruction(id):
   db.session.commit()
   
   instructions = Instructions.query.filter(
-        Instructions.recipe_id == recipe_id)
+      Instructions.recipe_id == recipe_id).order_by(Instructions.step.asc())
   return {
       'recipe_instructions': [instruction.to_dict() for instruction in instructions]
   }

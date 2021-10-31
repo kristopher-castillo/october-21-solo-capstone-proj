@@ -46,10 +46,19 @@ export const createRecipe = (recipeData) => async dispatch => {
     body: JSON.stringify(recipeData)
   });
 
+  console.log('createRecipeResponse', response)
+
   if (response.ok) {
-    const data = await response.json()
-    dispatch(addRecipeAction(data))
+    const data = await response.json();
+    dispatch(addRecipeAction(data));
     return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
   }
 }
 

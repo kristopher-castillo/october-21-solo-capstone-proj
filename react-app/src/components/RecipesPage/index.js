@@ -13,6 +13,7 @@ const RecipesPage = () => {
 
   useEffect(() => dispatch(getRecipes()), [dispatch])
   useEffect(() => dispatch(getImages()), [dispatch])
+  useEffect(() => window.scrollTo(0, 0), []);
 
   document.title = "Browse Recipes";
   
@@ -26,8 +27,7 @@ const RecipesPage = () => {
               <img
                 className="recipe-card-img"
                 src={
-                  images?.find((image) => image.recipe_id === recipe?.id)
-                    .image_url
+                  images?.find((image) => image.recipe_id === recipe?.id)?.image_url
                 }
                 alt="recipe card"
               ></img>

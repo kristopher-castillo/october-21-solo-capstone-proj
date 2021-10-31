@@ -36,7 +36,32 @@ def seed_notes():
       content="I don't like cheese, tbh.",
       user_id=1,
       recipe_id=4
-    )
+    ),
+    note_8=Note(
+      content="Has anyone made this in an air fryer?",
+      user_id=1,
+      recipe_id=3
+    ),
+    note_9=Note(
+      content="I love bread",
+      user_id=2,
+      recipe_id=3
+    ),
+    note_10=Note(
+      content="I haven't made this yet, but I'm pretty sure I'll hate it.",
+      user_id=2,
+      recipe_id=4
+    ),
+    note_11=Note(
+      content="Try boiling the pasta in wine",
+      user_id=1,
+      recipe_id=1
+    ),
+    note_12=Note(
+      content="I replaced the squash with whole pieces of cheese and it was very messy",
+      user_id=2,
+      recipe_id=1
+    ),
   )
 
   for key in seeders:

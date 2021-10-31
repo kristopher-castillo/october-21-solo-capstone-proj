@@ -28,24 +28,32 @@ nav {
 .nav-logo-container {
   display: flex;
   flex-direction: row;
+  width: 200px;
 }
 
 .logo-link {
   display: flex;
   flex-direction: row;
+  align-items: center;
   width: 100px;
 }
 
 .nav-logo-button{
   width: 180px;
   height: 45px;
-  /* background-image: url("logo.png");
-  background-size: 20%;
-  background-repeat: no-repeat; */
+  background-image: url("logo.png");
+  /* background-size: 20%; */
+  /* background-repeat: no-repeat; */
   /* align-items: center; */
   /* justify-content: space-around; */
   /* border: none;
   background-color: transparent; */
+}
+
+.logo-image {
+  width: 45px;
+  height: 45px;
+  /* display: inline-block */
 }
 
 .nav-logo-text{
@@ -67,6 +75,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   width: 300px;
+}
+
+.user-container-loggedout button{
+cursor: pointer;
 }
 
 .new-recipe-link, .recipes-link-btn {

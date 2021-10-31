@@ -141,7 +141,7 @@ const EditRecipeIngredientsPage = () => {
             // </div>
           ))}
         </div>
-        <p className="edit-ingredients-title">Ingredients</p>
+        {/* <p className="edit-ingredients-title">Ingredients</p> */}
         <div className="edit-ingredients-body-container">
           <div
             className="edit-ingredients-form-container"
@@ -153,8 +153,8 @@ const EditRecipeIngredientsPage = () => {
               <input
                 className="edit-ingredient-amount"
                 type="number"
-                step=".5"
-                min=".5"
+                step=".05"
+                min=".25"
                 max="100"
                 name="ingredient-amount"
                 onChange={(e) => {
@@ -193,8 +193,8 @@ const EditRecipeIngredientsPage = () => {
               <input
                 className="edit-ingredient-amount"
                 type="number"
-                step=".5"
-                min=".5"
+                step=".05"
+                min=".25"
                 max="100"
                 name="ingredient-amount"
                 onChange={(e) => {
@@ -231,7 +231,7 @@ const EditRecipeIngredientsPage = () => {
           </div>
         </div>
         <div className="edit-ingredients-buttons-container">
-          <Link to="/recipes/4">
+          <Link to={`/recipes/${recipeId}`}>
             <button className="edit-ingredients-cancel-btn" type="button">
               Cancel
             </button>

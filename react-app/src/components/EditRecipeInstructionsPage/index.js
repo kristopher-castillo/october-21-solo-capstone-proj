@@ -38,6 +38,9 @@ const EditRecipeInstructionsPage = () => {
     };
 
     dispatch(createInstructions(newInstructions));
+    setContent("");
+    setEditInstructionsId("");
+    setStep(1);
   };
 
   const handleEditSubmit =  (e) => {
@@ -50,6 +53,11 @@ const EditRecipeInstructionsPage = () => {
     };
 
     dispatch(updateInstructions(editedInstructions, editInstructionsId));
+    setHideAddForm(false);
+    setHideEditForm(true);
+    setContent("");
+    setEditInstructionsId("");
+    setStep(1);
   };
 
   const handleInstructionDelete = (e, instructionId) => {
@@ -151,7 +159,7 @@ const EditRecipeInstructionsPage = () => {
           </ul>
         </div>
 
-        <h3 className="edit-instructions-title">Preparation</h3>
+        {/* <h3 className="edit-instructions-title">Preparation</h3> */}
         <div className="edit-instructions-body-container">
           <div
             className="edit-instructions-form-container"
@@ -227,7 +235,7 @@ const EditRecipeInstructionsPage = () => {
           </div>
         </div>
         <div className="edit-instructions-buttons-container">
-          <Link to="/">
+          <Link to={`/recipes/${recipeId}`}>
             <button className="edit-instructions-cancel-btn">Cancel</button>
           </Link>
           <SubmitButton />
