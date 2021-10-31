@@ -121,7 +121,7 @@ const NewRecipeIngredientsPage = () => {
                 className="new-ingredient-amount"
                 type="number"
                 step=".5"
-                min=".5"
+                min=".25"
                 max="100"
                 name="ingredient-amount"
                 onChange={(e) => {

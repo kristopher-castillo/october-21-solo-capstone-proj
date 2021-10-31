@@ -159,7 +159,7 @@ const EditRecipeInstructionsPage = () => {
           </ul>
         </div>
 
-        <h3 className="edit-instructions-title">Preparation</h3>
+        {/* <h3 className="edit-instructions-title">Preparation</h3> */}
         <div className="edit-instructions-body-container">
           <div
             className="edit-instructions-form-container"
