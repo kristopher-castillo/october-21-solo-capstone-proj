@@ -10,7 +10,7 @@ const NewRecipePage = () => {
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState("");
   const [yield_amount, setYieldAmount] = useState(1);
-  const [completion_time, setTime] = useState(0);
+  const [completion_time, setTime] = useState(1);
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("")
   const sessionUser = useSelector((state) => state.session.user);
@@ -89,7 +89,7 @@ const NewRecipePage = () => {
               <input
                 className="new-recipe-time"
                 type="number"
-                min="0"
+                min="1"
                 max="100"
                 name="time"
                 onChange={(e) => {
@@ -97,6 +97,7 @@ const NewRecipePage = () => {
                 }}
                 value={completion_time}
               ></input>
+              <label>Description:</label>
               <textarea
                 className="new-recipe-description"
                 placeholder="Type your recipe's description here."
@@ -114,6 +115,7 @@ const NewRecipePage = () => {
                 className="image-upload"
                 type="file"
                 name="file"
+                accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}
                 required
               ></input>

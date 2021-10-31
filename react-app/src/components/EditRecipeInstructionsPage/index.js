@@ -38,6 +38,9 @@ const EditRecipeInstructionsPage = () => {
     };
 
     dispatch(createInstructions(newInstructions));
+    setContent("");
+    setEditInstructionsId("");
+    setStep(1);
   };
 
   const handleEditSubmit =  (e) => {
@@ -50,6 +53,11 @@ const EditRecipeInstructionsPage = () => {
     };
 
     dispatch(updateInstructions(editedInstructions, editInstructionsId));
+    setHideAddForm(false);
+    setHideEditForm(true);
+    setContent("");
+    setEditInstructionsId("");
+    setStep(1);
   };
 
   const handleInstructionDelete = (e, instructionId) => {

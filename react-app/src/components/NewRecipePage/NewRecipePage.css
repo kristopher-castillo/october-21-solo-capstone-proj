@@ -43,12 +43,12 @@ padding: 75px 0px;
 }
 
 .new-recipe-time, .new-recipe-yield {
-  width: 40px;
+  width: 50px;
   font-size: 1.25rem;
 }
 
 .new-recipe-description {
-  margin-top: 15px;
+  /* margin-top: 15px; */
   width: 100%;
   font: 1.25rem Georgia, 'Times New Roman', Times, serif;
   padding: 10px;
