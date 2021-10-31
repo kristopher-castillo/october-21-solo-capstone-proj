@@ -120,7 +120,7 @@ const NewRecipeIngredientsPage = () => {
               <input
                 className="new-ingredient-amount"
                 type="number"
-                step=".5"
+                step=".05"
                 min=".25"
                 max="100"
                 name="ingredient-amount"

@@ -153,7 +153,7 @@ const EditRecipeIngredientsPage = () => {
               <input
                 className="edit-ingredient-amount"
                 type="number"
-                step=".5"
+                step=".05"
                 min=".25"
                 max="100"
                 name="ingredient-amount"
@@ -193,7 +193,7 @@ const EditRecipeIngredientsPage = () => {
               <input
                 className="edit-ingredient-amount"
                 type="number"
-                step=".5"
+                step=".05"
                 min=".25"
                 max="100"
                 name="ingredient-amount"

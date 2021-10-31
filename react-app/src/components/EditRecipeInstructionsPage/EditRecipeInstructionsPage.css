@@ -31,9 +31,9 @@ padding: 75px 0px;
   width: 70vw;
 }
 
-.edit-instructions-list-container {
+.edit-recipe-steps-list {
   min-height: 30vh;
-  width: 30vw;
+  width: 70vw;
 }
 
 .edit-instructions-form-container form {
