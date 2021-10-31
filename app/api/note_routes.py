@@ -53,7 +53,8 @@ def new_note():
     db.session.add(new_note)
     db.session.commit()
 
-    notes = Note.query.filter(Note.recipe_id == data['recipe_id'])
+    notes = Note.query.filter(
+        Note.recipe_id == data['recipe_id']).order_by(Note.id.asc())
     return {
         'recipe_notes': [note.to_dict() for note in notes]
     }
@@ -76,7 +77,8 @@ def update_note(id):
     updated_note.recipe_id = updated_note.recipe_id
     db.session.commit()
 
-    notes = Note.query.filter(Note.recipe_id == updated_note.recipe_id)
+    notes = Note.query.filter(
+        Note.recipe_id == updated_note.recipe_id).order_by(Note.id.asc())
     return {
         'recipe_notes': [note.to_dict() for note in notes]
     }

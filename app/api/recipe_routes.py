@@ -135,7 +135,7 @@ def get_recipe_notes(id):
   Get all notes associated with a specific id.
   """
 
-  notes = Note.query.filter(Note.recipe_id == id)
+  notes = Note.query.filter(Note.recipe_id == id).order_by(Note.id.asc())
   
   return {
       'recipe_notes': [note.to_dict() for note in notes]

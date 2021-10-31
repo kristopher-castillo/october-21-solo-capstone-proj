@@ -40,6 +40,11 @@ const NavBar = () => {
       <div className="nav-logo-container">
         <NavLink to="/" exact={true} className="logo-link">
           {/* <button className="nav-logo-button"></button> */}
+          <img
+            className="logo-image"
+            src="https://cookingclone.s3.amazonaws.com/logo.png"
+            alt=""
+          ></img>
           <p className="nav-logo-text">|Cooking</p>
         </NavLink>
       </div>
