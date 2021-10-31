@@ -111,7 +111,7 @@ def get_recipe_ingredients(id):
   Get all ingredients associated with a specific id.
   """
 
-  ingredients = Ingredient.query.filter(Ingredient.recipe_id == id)
+  ingredients = Ingredient.query.filter(Ingredient.recipe_id == id).order_by(Ingredient.id.asc())
   
   return {
       'recipe_ingredients': [ingredient.to_dict() for ingredient in ingredients]
