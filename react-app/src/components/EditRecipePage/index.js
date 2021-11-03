@@ -49,7 +49,7 @@ const EditRecipePage = () => {
       completion_time,
     }
 
-    console.log(updatedRecipe)
+    
 
     dispatch(updateRecipe(updatedRecipe, recipeId));
     

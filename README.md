@@ -25,3 +25,5 @@ https://github.com/kristopher-castillo/october-21-solo-capstone-proj
 
 I was able to utilize a wide variety of technologies in this project. In the back end, the site relies on Flask-SQLAlchemy to manage its database of ingredients, instructions, images, and other recipe info. Flask was used to build and implement interconnected routes and WTForms provided seamless backend validations to forms. 
 When designing the front end, I relied on React's powerful HTML syntax along with CSS to create a functional and attractive app. Te site also leverages Amazon S3 to manage storage and hosting of user uploaded images. These technologies were enhanced by the use of Redux to manage and manipulate  state, producing a dynamic final product. The site is hosted on Heroku to provide you with a simple way to experience the site's features.
+
+
