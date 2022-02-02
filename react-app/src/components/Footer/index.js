@@ -14,6 +14,9 @@ const Footer = () => {
         <a className="footer-github" href="https://github.com/kristopher-castillo">
           <p>GitHub</p>
         </a>
+        <a className="footer-portfolio" href="http://kristophercastillo.com">
+          <p>Portfolio</p>
+        </a>
       </div>
     </footer>
   );
